@@ -1,0 +1,282 @@
+[
+    {
+        "name": "boyfriend",
+        "origin": "Friday Night Funkin'",
+        "mod": "Base Game",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunkin/images/5/5b/Boyfriend.gif/revision/latest?cb=20220720171155&format=original",
+        "icon": ""
+    },
+    {
+        "name": "girlfriend",
+        "origin": "Friday Night Funkin'",
+        "mod": "Base Game",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunkin/images/e/e9/Gfboombox.gif/revision/latest?cb=20210331213133&format=original",
+        "icon": ""
+    },
+    {
+        "name": "pico",
+        "origin": "Pico's School",
+        "mod": "Base Game",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunkin/images/0/02/Pico_Newgrounds.gif/revision/latest?cb=20210322184621&format=original",
+        "icon": ""
+    },
+    {
+        "name": "tankman",
+        "origin": "TANKMEN",
+        "mod": "Base Game",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunkin/images/d/d0/NEWGROUNDS_DOT_COM.gif/revision/latest?cb=20210421170217&format=original",
+        "icon": ""
+    },
+    {
+        "name": "whitty",
+        "origin": "Vs. Whitty",
+        "mod": "Vs. Whitty",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/4b/Whitty_Normal.gif/revision/latest?cb=20210329145254&format=original",
+        "icon": ""
+    },
+    {
+        "name": "tricky",
+        "origin": "Madness Combat",
+        "mod": "Vs. Tricky",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/9d/TrickyMaskAnim.gif/revision/latest?cb=20211006180019&format=original",
+        "icon": ""
+    },
+    {
+        "name": "hank",
+        "origin": "Madness Combat",
+        "mod": "FNF Online",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/7f/HankOnlineIdle.gif/revision/latest?cb=20211030140529&format=original",
+        "icon": ""
+    },
+    {
+        "name": "edd",
+        "origin": "Eddsworld",
+        "mod": "FNF Online",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/ef/EddChallengeIdle.gif/revision/latest?cb=20220131055616&format=original",
+        "icon": ""
+    },
+    {
+        "name": "tord",
+        "origin": "Eddsworld",
+        "mod": "FNF Online",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/cb/TordPlayableIdle.gif/revision/latest?cb=20220131052920&format=original",
+        "icon": ""
+    },
+    {
+        "name": "shaggy",
+        "origin": "Scooby-Doo",
+        "mod": "Vs. Shaggy",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/0f/SimShaggyIdle.gif/revision/latest?cb=20211013044604&format=original",
+        "icon": ""
+    },
+    {
+        "name": "sonic.exe",
+        "origin": "Sonic.exe",
+        "mod": "Vs. Sonic.exe",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/22/SonicExeIdle2.5.gif.gif/revision/latest?cb=20220707153954&format=original",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d2/SlowBoi.png/revision/latest?cb=20220707114941&format=original"
+    },
+    {
+        "name": "lord x",
+        "origin": "Sonic PC Port",
+        "mod": "Vs. Sonic.exe",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/fb/LordX3.0OnlyIdleAnimThing.gif/revision/latest?cb=20220708182054&format=original",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f0/Sonicexex.png/revision/latest?cb=20220707114625&format=original"
+    },
+    {
+        "name": "majin sonic",
+        "origin": "Sonic CD",
+        "mod": "Vs. Sonic.exe",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a8/MajinSonic3.0IdleAnim.gif/revision/latest?cb=20220707191515&format=original",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/db/Icon-Majin-OG.png/revision/latest?cb=20220707120010&format=original"
+    },
+    {
+        "name": "fleetway",
+        "origin": "Sonic The Comic Issue 7",
+        "mod": "Vs. Sonic.exe",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d5/FleetwayIdle.gif/revision/latest?cb=20211128163152&format=original",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a1/SuperSonicDoesWhatExeDoesntDo.png/revision/latest?cb=20220707120535&format=original"
+    },
+    {
+        "name": "sunky",
+        "origin": "Sunky The Game",
+        "mod": "Vs. Sonic.exe",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/2f/SunkyNormal3.0IdleAnim.gif/revision/latest?cb=20220707191516&format=original",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c0/Ioccasionallysunk.png/revision/latest?cb=20220707114531&format=original"
+    },
+    {
+        "name": "mx",
+        "origin": "Mario PC Port",
+        "mod": "Mario's Madness",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/89/PowerDownIdle.gif/revision/latest?cb=20220222015652&format=original",
+        "icon": ""
+    },
+    {
+        "name": "suicide mouse/mickey mouse",
+        "origin": "Suicide Mouse Creepypasta",
+        "mod": "Wednesday's Infidelity",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/98/WIMouse4Idle.gif/revision/latest?cb=20220909055620&format=original",
+        "icon": ""
+    },
+    {
+        "name": "red mist/squidward",
+        "origin": "Red Mist Creepypasta",
+        "mod": "Mistful Crimson Morning",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/65/SquidwardPhase3NewMCM.gif/revision/latest?cb=20220706114959&format=original",
+        "icon": ""
+    },
+    {
+        "name": "gold",
+        "origin": "Lost Silver Creepypasta",
+        "mod": "Friday Night Funkin Lullaby",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/90/Gold-idle.gif/revision/latest?cb=20211108122959&format=original",
+        "icon": ""
+    },
+    {
+        "name": "missingno",
+        "origin": "Pokémon Red and Blue",
+        "mod": "Friday Night Funkin Lullaby",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/ed/MissingnoIdle.gif/revision/latest?cb=20211110223912&format=original",
+        "icon": ""
+    },
+    {
+        "name": "taeyai",
+        "origin": "Cyber Sensation",
+        "mod": "Cyber Sensation",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/3f/Taeyai_Idle.gif/revision/latest?cb=20210924142704&format=original",
+        "icon": ""
+    },
+    {
+        "name": "agoti",
+        "origin": "FNF Entities",
+        "mod": "FNF Entities",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b3/AGOTIMiclessAnim.gif/revision/latest?cb=20210617192028&format=original",
+        "icon": ""
+    },
+    {
+        "name": "aldryx",
+        "origin": "FNF Entities",
+        "mod": "FNF Entities",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/36/Thebestcharacterinentity.gif/revision/latest?cb=20211205051608&format=original",
+        "icon": ""
+    },
+    {
+        "name": "solzar",
+        "origin": "FNF Entities",
+        "mod": "FNF Entities",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/8d/SolAnim.gif/revision/latest?cb=20211205052001&format=original",
+        "icon": ""
+    },
+    {
+        "name": "nikusa",
+        "origin": "FNF Entities",
+        "mod": "FNF Entities",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/22/NikusaIdleAnim.gif/revision/latest?cb=20211205215152&format=original",
+        "icon": ""
+    },
+    {
+        "name": "tabi",
+        "origin": "Vs Ex",
+        "mod": "Vs Ex",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/fe/TabiNewIdle.gif/revision/latest?cb=20220411232732&format=original",
+        "icon": ""
+    },
+    {
+        "name": "nikku",
+        "origin": "Hotline 024",
+        "mod": "Hotline 024",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/3b/NikkuAnim.gif/revision/latest?cb=20220427100054&format=original",
+        "icon": ""
+    },
+    {
+        "name": "annie",
+        "origin": "Vs. Annie",
+        "mod": "Vs. Annie",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d0/AnnieHRIdle.gif/revision/latest?cb=20220506142029&format=original",
+        "icon": ""
+    },
+    {
+        "name": "garcello",
+        "origin": "Smoke Em Out Struggle",
+        "mod": "Smoke Em Out Struggle",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/da/GarcelloIdle.gif/revision/latest?cb=20220506160322&format=original",
+        "icon": ""
+    },
+    {
+        "name": "ski",
+        "origin": "Ski Sings for You!",
+        "mod": "Ski Sings for You!",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f7/SkiForwardAnim.gif/revision/latest?cb=20220215151501&format=original",
+        "icon": ""
+    },
+    {
+        "name": "cuphead",
+        "origin": "Cuphead",
+        "mod": "Indie Cross",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/68/CupheadAnim.gif/revision/latest?cb=20220409014349&format=original",
+        "icon": ""
+    },
+    {
+        "name": "sans",
+        "origin": "Undertale",
+        "mod": "Indie Cross",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/53/IndieSansBoneIdle.gif/revision/latest?cb=20220410164834&format=original",
+        "icon": ""
+    },
+    {
+        "name": "bendy",
+        "origin": "Bendy And The Ink Machine",
+        "mod": "Indie Cross",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/40/IndieBendyIdle.gif/revision/latest?cb=20220410164834&format=original",
+        "icon": ""
+    },
+    {
+        "name": "imposter",
+        "origin": "Among Us",
+        "mod": "Indie Cross",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d9/Red_Impostor_V3.gif/revision/latest?cb=20210828141941&format=original",
+        "icon": ""
+    },
+    {
+        "name": "monika",
+        "origin": "Doki Doki Literature Club",
+        "mod": "Doki Doki Takeover",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f6/ReconcileMonikaIdle.gif/revision/latest?cb=20220810023107&format=original",
+        "icon": ""
+    },
+    {
+        "name": "sayori",
+        "origin": "Doki Doki Literature Club",
+        "mod": "Doki Doki Takeover",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/1b/DDSayoriIdle.gif/revision/latest?cb=20220313221300&format=original",
+        "icon": ""
+    },
+    {
+        "name": "yuri",
+        "origin": "Doki Doki Literature Club",
+        "mod": "Doki Doki Takeover",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c8/DDYuriIdle.gif/revision/latest?cb=20211028213156&format=original",
+        "icon": ""
+    },
+    {
+        "name": "natsuki",
+        "origin": "Doki Doki Literature Club",
+        "mod": "Doki Doki Takeover",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c7/DDNatsukiIdle.gif/revision/latest?cb=20220810023129&format=original",
+        "icon": ""
+    },
+    {
+        "name": "purple guy",
+        "origin": "Five Nights At Freddy's",
+        "mod": "Funkin' at Freddy's + Afton",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/2c/AftonIdle.gif/revision/latest?cb=20220226195115&format=original",
+        "icon": ""
+    },
+    {
+        "name": "ourple guy",
+        "origin": "Five Nights At Freddy's",
+        "mod": "Vs. OURPLE GUY",
+        "imageURL": "https://fridaynightfunking.fandom.com/wiki/File:OurpleNewIdle.gif",
+        "icon": ""
+    }
+]
