@@ -23,7 +23,7 @@ const init = () =>{
     {
         empty = "";
         Object.keys(characters).sort().forEach(char => {
-            empty += char + "<br>";
+            empty += char + "  ";
         });
     }
     else
@@ -53,7 +53,7 @@ const init = () =>{
         if(names.length != 0)
         {
             names.forEach(char =>{
-                empty += char + "<br>";
+                empty += char + " ";
             });
         }
     }

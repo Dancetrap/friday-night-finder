@@ -7,6 +7,7 @@ const fs = require('fs');  // pull in the file system module
 const index = fs.readFileSync(`${__dirname}/../client/client.html`);
 const css = fs.readFileSync(`${__dirname}/../client/style.css`);
 const js = fs.readFileSync(`${__dirname}/../client/finder.js`);
+const json = fs.readFileSync(`${__dirname}/../characters.json`);
 
 //function to get the index page
 const getIndex = (request, response) => {
@@ -23,14 +24,21 @@ const getCSS = (request, response) => {
 };
 
 const getJava = (request, response) => {
-    response.writeHead(200, { 'Content-Type': 'text/javascript' });
-    response.write(js);
-    response.end();
-  };
+  response.writeHead(200, { 'Content-Type': 'text/javascript' });
+  response.write(js);
+  response.end();
+};
+
+const getJSONPrototype = (request, response) => {
+  response.writeHead(200, { 'Content-Type': 'application/json' });
+  response.write(json);
+  response.end();
+};
 
 //set out public exports
 module.exports = {
   getIndex,
   getCSS,
   getJava,
+  getJSONPrototype,
 };

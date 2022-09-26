@@ -39,6 +39,8 @@ const onRequest = (request, response) => {
     htmlHandler.getCSS(request, response);
   } else if (request.url === '/finder.js') {
     htmlHandler.getJava(request, response);
+  } else if (request.url === '/characters.json') {
+    htmlHandler.getJSONPrototype(request, response);
   } else {
     htmlHandler.getIndex(request, response);
   }
