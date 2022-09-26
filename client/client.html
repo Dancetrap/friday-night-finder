@@ -12,10 +12,16 @@
 <body>
   <section id="top">
     <h3>Friday Night Finder</h3>
-    <form id="nameForm" action="/addUser" method="post">
-      <label for="name">Search: </label>
-      <input id="nameField" type="search" name="name" />
-    </form>
+    <div id="inputField">
+      <form id="characterForm" action="characters" method="post">
+        <label for="name">Character: </label>
+        <input id="characterField" type="search" name="name" />
+      </form>
+      <form id="modsForm" action="mods" method="post">
+        <label for="name">Mod: </label>
+        <input id="modsField" type="search" name="name" />
+      </form>
+    </div>
   </section>
   <!-- <img src="https://static.wikia.nocookie.net/fridaynightfunking/images/2/22/SonicExeIdle2.5.gif.gif" alt="test" id="image"> -->
   <section id="content">

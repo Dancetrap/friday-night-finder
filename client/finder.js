@@ -4,7 +4,7 @@ import characters from '../characters.json' assert {type: 'json'};
 
 // with open('..characters.json', 'r') as fcc_file:
 
-const nameField = document.getElementById('nameField');
+const nameField = document.getElementById('characterField');
 const content = document.getElementById('content');
 const image = document.getElementById('image')
 
@@ -19,28 +19,25 @@ let clickables = [];
 // Helpful Node: https://github.com/dijs/wiki, InfoBox parser: https://github.com/dijs/infobox-parser, MediaLink API for Funkipedia: https://fridaynightfunking.fandom.com/api.php, MediaLink API for Friday Night Funkipedia: https://fridaynightfunkin.fandom.com/api.php 
 
 let empty = "";
+
+const handleResponse = async (response) => {
+};
+
+
+
+
 const init = () =>{
-    // console.log("yo");
-    // const funky = JSON.parse(characters);
-    // content.innerHTML = "";
-    // console.log(Object.values(characters));
 
     const val = Object.values(characters).sort(function(a, b) {
         return compareStrings(a.name, b.name);
     });
 
-    // console.log(val);
-
     if(nameField.value == "")
     {
-        // empty = "";
-        // Object.keys(characters).sort().forEach(char => {
-        //     empty += char + "  ";
-        // });
         clickables = [];
         empty = "";
         val.sort().forEach(char => {
-            let section = `<div id="${char.name}" style="margin: 5px;"><img src="${char.imageURL}" alt="${char.name}" height="100px" style="object-fit: contain;"></img><p style="margin: 1px;">${char.name}</p></div>`;
+            let section = `<div id="${char.name}" style="margin: 5px;"><img src="${char.imageURL}" alt="${char.name}" height="150px" style="object-fit: contain;"></img><p style="margin: 1px;">${char.name}</p></div>`;
             empty += section;
             clickables.push(section);
         });
@@ -50,9 +47,7 @@ const init = () =>{
         clickables = [];
         empty = "";
         let names = [];
-        // let urls = [];
         const search = nameField.value.split("");
-        // console.log(nameField.value.length);
         val.sort().forEach(char => {
             let exist = true;
             const letters = char.name.split("");
@@ -70,20 +65,23 @@ const init = () =>{
 
             if(exist){
                 names.push(char);
-                // urls.push(char.imageURL);
             } 
         });
-            // console.log(clickables);
         if(names.length != 0)
         {
             names.forEach(char =>{
-                let section = `<div id="${char.name}" style="margin: 5px;"><img src="${char.imageURL}" alt="${char.name}" height="100px" style="object-fit: contain;"></img><p style="margin: 1px;">${char.name}</p></div>`;
+                let section = `<div id="${char.name}" style="margin: 5px;"><img src="${char.imageURL}" alt="${char.name}" height="150px" style="object-fit: contain;"></img><p style="margin: 1px;">${char.name}</p></div>`;
                 empty += section;
                 clickables.push(section);
             });
         }
     }
     content.innerHTML = empty;
+
+    if(clickables.length == 0)
+    {
+        // call on handleFunction that none has been found
+    }
 };
 
 window.onload = init;
