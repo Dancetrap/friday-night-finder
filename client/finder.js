@@ -6,8 +6,10 @@ import characters from '../characters.json' assert {type: 'json'};
 
 const nameField = document.getElementById('nameField');
 const content = document.getElementById('content');
+const image = document.getElementById('image')
 
 let ar = [];
+let clickables = [];
 
 // Names that will associate with the base game, boyfriend, bf, girlfriend, gf, dad, daddy dearest, spooky, spooky kids, skid and pump, pico, mom, mommy mearest, monster, lemon demon, senpai, spirit, tankman
 
@@ -27,7 +29,7 @@ const init = () =>{
         return compareStrings(a.name, b.name);
     });
 
-    console.log(val);
+    // console.log(val);
 
     if(nameField.value == "")
     {
@@ -35,21 +37,25 @@ const init = () =>{
         // Object.keys(characters).sort().forEach(char => {
         //     empty += char + "  ";
         // });
-
+        clickables = [];
         empty = "";
         val.sort().forEach(char => {
-            empty += char.name + "  ";
+            let section = `<div id="${char.name}" style="margin: 5px;"><img src="${char.imageURL}" alt="${char.name}" height="100px" style="object-fit: contain;"></img><p style="margin: 1px;">${char.name}</p></div>`;
+            empty += section;
+            clickables.push(section);
         });
     }
     else
     {
+        clickables = [];
         empty = "";
         let names = [];
+        // let urls = [];
         const search = nameField.value.split("");
         // console.log(nameField.value.length);
         val.sort().forEach(char => {
             let exist = true;
-            const letters = char.split("");
+            const letters = char.name.split("");
             for(let i = 0; i < nameField.value.length; i++)
             {
                 if(exist)
@@ -62,13 +68,18 @@ const init = () =>{
                 }
             }
 
-            if(exist) names.push(char.name);
+            if(exist){
+                names.push(char);
+                // urls.push(char.imageURL);
+            } 
         });
-
+            // console.log(clickables);
         if(names.length != 0)
         {
             names.forEach(char =>{
-                empty += char + " ";
+                let section = `<div id="${char.name}" style="margin: 5px;"><img src="${char.imageURL}" alt="${char.name}" height="100px" style="object-fit: contain;"></img><p style="margin: 1px;">${char.name}</p></div>`;
+                empty += section;
+                clickables.push(section);
             });
         }
     }
