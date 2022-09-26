@@ -31,9 +31,14 @@ const init = () =>{
 
     if(nameField.value == "")
     {
+        // empty = "";
+        // Object.keys(characters).sort().forEach(char => {
+        //     empty += char + "  ";
+        // });
+
         empty = "";
-        Object.keys(characters).sort().forEach(char => {
-            empty += char + "  ";
+        val.sort().forEach(char => {
+            empty += char.name + "  ";
         });
     }
     else
@@ -42,7 +47,7 @@ const init = () =>{
         let names = [];
         const search = nameField.value.split("");
         // console.log(nameField.value.length);
-        Object.keys(characters).sort().forEach(char => {
+        val.sort().forEach(char => {
             let exist = true;
             const letters = char.split("");
             for(let i = 0; i < nameField.value.length; i++)
@@ -57,7 +62,7 @@ const init = () =>{
                 }
             }
 
-            if(exist) names.push(char);
+            if(exist) names.push(char.name);
         });
 
         if(names.length != 0)
