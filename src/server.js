@@ -38,7 +38,7 @@ const onRequest = (request, response) => {
   if (request.url === '/style.css') {
     htmlHandler.getCSS(request, response);
   } else if (request.url === '/finder.js') {
-    // htmlHandler.getJava(request, response);
+    htmlHandler.getJava(request, response);
   } else {
     htmlHandler.getIndex(request, response);
   }

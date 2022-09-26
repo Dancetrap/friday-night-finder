@@ -1,4 +1,6 @@
 import characters from '../characters.json' assert {type: 'json'};
+// import characters from '../characters.json';
+// import json with open('../characters.json') as data_file:
 
 // with open('..characters.json', 'r') as fcc_file:
 
