@@ -1,0 +1,21 @@
+{
+  "name": "friday-night-finder",
+  "version": "1.0.0",
+  "description": "Getting Freaky with a Friday Finder",
+  "main": "server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "pretest": "eslint ./src --fix",
+    "test": "echo \"Get Freaky\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dancetrap/friday-night-finder.git"
+  },
+  "author": "Dancetrap",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Dancetrap/friday-night-finder/issues"
+  },
+  "homepage": "https://github.com/Dancetrap/friday-night-finder#readme"
+}
