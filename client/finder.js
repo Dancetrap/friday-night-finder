@@ -10,6 +10,7 @@ const content = document.getElementById('content');
 // An updated_version will have another search bar titled "Mods". This will allow the user to search up the mod they're looking for a certain character
 // For the final version, I might just have to stick with the main game since with the mods, things gets kinda complicated.
 // var url = 'https://fridaynightfunkin.fandom.com/wiki/'
+// Perhaps this node could help me https://github.com/dijs/wiki
 
 let empty = "";
 const init = () =>{
