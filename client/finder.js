@@ -7,6 +7,8 @@ import characters from '../characters.json' assert {type: 'json'};
 const nameField = document.getElementById('nameField');
 const content = document.getElementById('content');
 
+let ar = [];
+
 // Names that will associate with the base game, boyfriend, bf, girlfriend, gf, dad, daddy dearest, spooky, spooky kids, skid and pump, pico, mom, mommy mearest, monster, lemon demon, senpai, spirit, tankman
 
 // An updated_version will have another search bar titled "Mods". This will allow the user to search up the mod they're looking for a certain character
@@ -19,6 +21,14 @@ const init = () =>{
     // console.log("yo");
     // const funky = JSON.parse(characters);
     // content.innerHTML = "";
+    // console.log(Object.values(characters));
+
+    const val = Object.values(characters).sort(function(a, b) {
+        return compareStrings(a.name, b.name);
+    });
+
+    console.log(val);
+
     if(nameField.value == "")
     {
         empty = "";
@@ -62,3 +72,11 @@ const init = () =>{
 
 window.onload = init;
 nameField.onchange = init;
+
+function compareStrings(a, b) {
+    // Assuming you want case-insensitive comparison
+    a = a.toLowerCase();
+    b = b.toLowerCase();
+  
+    return (a < b) ? -1 : (a > b) ? 1 : 0;
+}
