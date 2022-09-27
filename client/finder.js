@@ -143,6 +143,7 @@ function capitalizeFirstLetter(string) {
 
 // So much of this will be changed so it could work in the server
 const charSelect = (char) => {
+
     if(char != selectedChar){
         selectedChar = char;
         infobox.style.display = "flex";
@@ -154,6 +155,28 @@ const charSelect = (char) => {
     }
     console.log(char);
     let character = char.id.split('Button')[0];
-    document.getElementById('name').innerHTML = capitalizeFirstLetter(character);
+
+    if(character.includes('-'))
+    {
+        let split = character.split('-');
+        let blank = ''
+        split.forEach(vari =>{
+            // blank
+            if(split.indexOf(vari) == split.length-1)
+            {
+                blank += capitalizeFirstLetter(vari);
+            }
+            else
+            {
+                blank += capitalizeFirstLetter(vari) + " ";
+            }
+        });
+        document.getElementById('name').innerHTML = blank;
+    }
+    else
+    {
+        document.getElementById('name').innerHTML = capitalizeFirstLetter(character);
+    }
+
     document.getElementById('baseImg').src = document.getElementById(`${character}Img`).src;
 };
