@@ -7,6 +7,7 @@ const http = require('http'); // http module
 const url = require('url'); // url module
 const query = require('querystring'); // query module
 const htmlHandler = require('./htmlResponse.js');
+const jsonHandler = require('./jsonResponse.js');
 
 // Either use a port given to us by heroku, or port 3000
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
@@ -42,6 +43,7 @@ const handlePost = (request, response, parsedUrl) => {
 };
 
 const handleGet = (request, response, parsedUrl) => {
+  const params = query.parse(parsedUrl.query);
   // route to correct method based on url
   if (parsedUrl.pathname === '/style.css') {
     htmlHandler.getCSS(request, response);
@@ -49,6 +51,8 @@ const handleGet = (request, response, parsedUrl) => {
     htmlHandler.getJava(request, response);
   } else if (parsedUrl.pathname === '/characters.json') {
     htmlHandler.getJSONPrototype(request, response);
+  } else if (parsedUrl.pathname === '/getCharacters') {
+    jsonHandler.getCharacters(request, response, params)
   } else {
     htmlHandler.getIndex(request, response);
   }
