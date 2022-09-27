@@ -30,3 +30,23 @@ html, body {
   display: flex;
   justify-content: center;
 }
+
+#infobox{
+  border: 2px solid black;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  padding: 1em;
+  /* visibility: hidden; */
+  /* justify-content: center; */
+}
+
+#infobox h1{
+  font-size: 30px;
+}
+
+/* button:hover {
+  background-color:#002ead;
+  transition: 0.7s;
+} */

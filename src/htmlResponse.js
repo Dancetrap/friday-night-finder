@@ -5,6 +5,8 @@ const fs = require('fs');  // pull in the file system module
 //want to do it on startup.
 //This not the best way to load files unless you have few files.
 const index = fs.readFileSync(`${__dirname}/../client/client.html`);
+const login = fs.readFileSync(`${__dirname}/../client/login.html`);
+const profile = fs.readFileSync(`${__dirname}/../client/profile.html`);
 const css = fs.readFileSync(`${__dirname}/../client/style.css`);
 const js = fs.readFileSync(`${__dirname}/../client/finder.js`);
 const json = fs.readFileSync(`${__dirname}/../characters.json`);
@@ -13,6 +15,18 @@ const json = fs.readFileSync(`${__dirname}/../characters.json`);
 const getIndex = (request, response) => {
   response.writeHead(200, { 'Content-Type': 'text/html' });
   response.write(index);
+  response.end();
+};
+
+const getLogin = (request, response) => {
+  response.writeHead(200, { 'Content-Type': 'text/html' });
+  response.write(login);
+  response.end();
+};
+
+const getProfile = (request, response) => {
+  response.writeHead(200, { 'Content-Type': 'text/html' });
+  response.write(profile);
   response.end();
 };
 
@@ -38,6 +52,8 @@ const getJSONPrototype = (request, response) => {
 //set out public exports
 module.exports = {
   getIndex,
+  getLogin,
+  getProfile,
   getCSS,
   getJava,
   getJSONPrototype,
