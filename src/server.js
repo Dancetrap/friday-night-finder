@@ -37,8 +37,8 @@ const parseBody = (request, response, handler) => {
 
 const handlePost = (request, response, parsedUrl) => {
   // If they decide to favorite the character
-  if (parsedUrl.pathname === '/favorite') {
-    // parseBody(request, response, jsonHandler.addUser);
+  if (parsedUrl.pathname === '/addUser') {
+    parseBody(request, response, jsonHandler.addUser);
   }
 };
 
@@ -53,8 +53,10 @@ const handleGet = (request, response, parsedUrl) => {
     htmlHandler.getJavaHandler(request, response);
   } else if (parsedUrl.pathname === '/characters.json') {
     htmlHandler.getJSONPrototype(request, response);
-  } else if (parsedUrl.pathname === '/getCharacters') {
+  } else if (parsedUrl.pathname === '/getUser') {
     jsonHandler.getCharacters(request, response, params)
+  } else if (parsedUrl.pathname === '/getCharacters') {
+    jsonHandler.getUser(request, response, params)
   } else if (parsedUrl.pathname === '/login.html'){
     htmlHandler.getLogin(request, response);
   } else {
@@ -77,7 +79,15 @@ const onRequest = (request, response) => {
   //   htmlHandler.getIndex(request, response);
   // }
   const parsedUrl = url.parse(request.url);
-  handleGet(request, response, parsedUrl);
+  if (request.method === 'post') {
+    console.log(request);
+    handlePost(request, response, parsedUrl);
+  }
+  else
+  {
+    handleGet(request, response, parsedUrl);
+  }
+  
 };
 
 // With the above onRequest and port, we can make a server.

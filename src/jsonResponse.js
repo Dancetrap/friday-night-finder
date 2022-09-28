@@ -63,7 +63,7 @@ const getUser = (request, response, params) =>{
         }
         else
         {
-            responseJSON.message = 'Incorrect Password',
+            responseJSON.message = 'Incorrect Username or Password',
             responseJSON.id = 'wrongPassword';
             return respondJSON(request, response, 400, responseJSON);
         }
@@ -73,6 +73,16 @@ const getUser = (request, response, params) =>{
             return respondJSON(request, response, responseCode, responseJSON);
         }
     }
+    else
+    {
+        responseJSON.message = 'Incorrect Username or Password',
+        responseJSON.id = 'wrongUsername';
+        return respondJSON(request, response, 400, responseJSON);
+    }
+
+    return respondJSONMeta(request, response, responseCode);
+
+    // set given username to request
 };
 
 const addUser = (request, response, params) =>{
@@ -101,6 +111,8 @@ const addUser = (request, response, params) =>{
     }
 
     return respondJSONMeta(request, response, responseCode);
+
+    // add and set given username
 };
 
 
@@ -151,7 +163,8 @@ const getCharacters = (request, response, params) =>{
     // console.log(newJSON);
     const obj = characters[params.name];
     console.log(params.name);
-    // if(newJSON != {}){
+
+    
     if(JSON.stringify(newJSON) != '{}'){
         // console.log(newJSON.name);
         for(const k in newJSON)
