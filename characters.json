@@ -59,6 +59,7 @@
         "name": "tord",
         "origin": "Eddsworld",
         "mod": "FNF Online",
+        "quote": "Hello...old friend",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/cb/TordPlayableIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/70/TordOnlineVSIcons.png"
     },
@@ -66,6 +67,7 @@
         "name": "shaggy",
         "origin": "Scooby-Doo",
         "mod": "Vs. Shaggy",
+        "quote": "Zoinks!",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/0f/SimShaggyIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b8/Red_Shaggy.png"
     },
@@ -73,6 +75,7 @@
         "name": "sonic.exe",
         "origin": "Sonic.exe",
         "mod": "Vs. Sonic.exe",
+        "quote": "I AM GOD!",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/22/SonicExeIdle2.5.gif.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d2/SlowBoi.png"
     },
@@ -87,6 +90,7 @@
         "name": "majin sonic",
         "origin": "Sonic CD",
         "mod": "Vs. Sonic.exe",
+        "quote": "Fun Is Infinite",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a8/MajinSonic3.0IdleAnim.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/db/Icon-Majin-OG.png"
     },
@@ -94,6 +98,7 @@
         "name": "fleetway",
         "origin": "Sonic The Comic Issue 7",
         "mod": "Vs. Sonic.exe",
+        "quote": "Let's see how fast you can really go!",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d5/FleetwayIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a1/SuperSonicDoesWhatExeDoesntDo.png"
     },
@@ -108,6 +113,7 @@
         "name": "mx",
         "origin": "Mario PC Port",
         "mod": "Mario's Madness",
+        "quote": "Innocence doesn't get you far",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/89/PowerDownIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c5/Icon_MXMadness.png"
     },
@@ -115,6 +121,7 @@
         "name": "suicide mouse",
         "origin": "Suicide Mouse Creepypasta",
         "mod": "Wednesday's Infidelity",
+        "quote": "Have you ever considered that without happiness, you'll know peace?",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/98/WIMouse4Idle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d0/DejectedSuicideMouseIcons.png"
     },
@@ -122,6 +129,7 @@
         "name": "red mist squidward",
         "origin": "Red Mist Creepypasta",
         "mod": "Mistful Crimson Morning",
+        "quote": "I just can't seem to get happy",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/65/SquidwardPhase3NewMCM.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/23/Icon-darkward.png"
     },
@@ -129,6 +137,7 @@
         "name": "gold",
         "origin": "Lost Silver Creepypasta",
         "mod": "Friday Night Funkin' Lullaby",
+        "quote": "I'M...DEAD",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/90/Gold-idle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/8/8a/GoldIcon.png"
     },
@@ -143,6 +152,7 @@
         "name": "taeyai",
         "origin": "Cyber Sensation",
         "mod": "Cyber Sensation",
+        "quote": "I can't do anything right!",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/3/3f/Taeyai_Idle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/00/TaeyaiIcons.png"
     },
@@ -213,6 +223,7 @@
         "name": "cuphead",
         "origin": "Cuphead",
         "mod": "Indie Cross",
+        "quote": "You know what I'd do when I'm not sure? I double down!",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/68/CupheadAnim.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f7/CupheadNewIcons.png"
     },
@@ -220,6 +231,7 @@
         "name": "sans",
         "origin": "Undertale",
         "mod": "Indie Cross",
+        "quote": "It's a beautiful day outside. Birds are singing. Flowers are blooming. On days like these, kids like you...should be burning in hell.",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/53/IndieSansBoneIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d4/SansIcons.png"
     },
@@ -241,6 +253,7 @@
         "name": "monika",
         "origin": "Doki Doki Literature Club",
         "mod": "Doki Doki Takeover",
+        "quote": "Just monika",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f6/ReconcileMonikaIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/4c/MonikaNotPixelIconSet.png"
     },
@@ -269,6 +282,7 @@
         "name": "purple guy",
         "origin": "Five Nights At Freddy's",
         "mod": "Funkin' at Freddy's + Afton",
+        "quote": "I always come back",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/2c/AftonIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/76/Aftonnormalicons.png"
     },
@@ -276,6 +290,7 @@
         "name": "ourple guy",
         "origin": "Five Nights At Freddy's",
         "mod": "Vs. OURPLE GUY",
+        "quote": "Why he ourple though?",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/16/OurpleNewIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/13/OURPLEIconsAnimated.gif"
     }

@@ -49,6 +49,7 @@ html, body {
   /* display: flex; */
   display: none;
   padding: 1em;
+  margin-top: 2em
   /* visibility: hidden; */
   /* justify-content: center; */
 }
