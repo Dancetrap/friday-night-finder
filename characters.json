@@ -77,16 +77,14 @@
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d2/SlowBoi.png"
     },
     "lord x":{
-        "name": "lord-x",
-        "alt": "lord x",
+        "name": "lord x",
         "origin": "Sonic PC Port",
         "mod": "Vs. Sonic.exe",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/fb/LordX3.0OnlyIdleAnimThing.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/f0/Sonicexex.png"
     },
     "majin sonic":{
-        "name": "majin-sonic",
-        "alt": "majin sonic",
+        "name": "majin sonic",
         "origin": "Sonic CD",
         "mod": "Vs. Sonic.exe",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a8/MajinSonic3.0IdleAnim.gif",
@@ -114,16 +112,14 @@
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/c/c5/Icon_MXMadness.png"
     },
     "suicide mouse":{
-        "name": "suicide-mouse",
-        "alt": "suicide mouse",
+        "name": "suicide mouse",
         "origin": "Suicide Mouse Creepypasta",
         "mod": "Wednesday's Infidelity",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/98/WIMouse4Idle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d0/DejectedSuicideMouseIcons.png"
     },
     "red mist":{
-        "name": "red-mist-squidward",
-        "alt": "red mist squidward",
+        "name": "red mist squidward",
         "origin": "Red Mist Creepypasta",
         "mod": "Mistful Crimson Morning",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/6/65/SquidwardPhase3NewMCM.gif",
@@ -270,16 +266,14 @@
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/f/fc/NatsukiIconSet.png"
     },
     "purple guy":{
-        "name": "purple-guy",
-        "alt": "purple guy",
+        "name": "purple guy",
         "origin": "Five Nights At Freddy's",
         "mod": "Funkin' at Freddy's + Afton",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/2c/AftonIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/76/Aftonnormalicons.png"
     },
     "ourple guy":{
-        "name": "ourple-guy",
-        "alt": "ourple guy",
+        "name": "ourple guy",
         "origin": "Five Nights At Freddy's",
         "mod": "Vs. OURPLE GUY",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/16/OurpleNewIdle.gif",
