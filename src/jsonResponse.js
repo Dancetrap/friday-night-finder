@@ -46,6 +46,64 @@ const respondJSONMeta = (request, response, status) => {
     response.end();
 };
 
+const getUser = (request, response, params) =>{
+    const responseJSON = {
+        message: 'Name and age are both required.',
+    };
+    if (!params.username || !params.password) {
+        responseJSON.id = 'missingParams';
+        return respondJSON(request, response, 400, responseJSON);
+    }
+    
+    if(users[params.username])
+    {
+        if(params.password == users[params.username].password)
+        {
+            responseCode = 201;
+        }
+        else
+        {
+            responseJSON.message = 'Incorrect Password',
+            responseJSON.id = 'wrongPassword';
+            return respondJSON(request, response, 400, responseJSON);
+        }
+
+        if (responseCode === 201) {
+            responseJSON.message = 'Load Successfully';
+            return respondJSON(request, response, responseCode, responseJSON);
+        }
+    }
+};
+
+const addUser = (request, response, params) =>{
+    const responseJSON = {
+        message: 'Name and age are both required.',
+    };
+    if (!params.username || !params.password) {
+        responseJSON.id = 'missingParams';
+        return respondJSON(request, response, 400, responseJSON);
+    }
+
+    if(!users[params.username]) {
+        responseCode = 201;
+        users[params.username] = {};
+    }
+
+    users[params.username].username = params.username;
+    users[params.username].password = params.password;
+    users[params.username].favorites = {};
+  
+    //if response is created, then set our created message
+    //and sent response with a message
+    if (responseCode === 201) {
+      responseJSON.message = 'Created Successfully';
+      return respondJSON(request, response, responseCode, responseJSON);
+    }
+
+    return respondJSONMeta(request, response, responseCode);
+};
+
+
 const getCharacters = (request, response, params) =>{
     search = [];
     
@@ -92,25 +150,43 @@ const getCharacters = (request, response, params) =>{
 
     // console.log(newJSON);
     const obj = characters[params.name];
-
+    console.log(params.name);
     // if(newJSON != {}){
     if(JSON.stringify(newJSON) != '{}'){
         // console.log(newJSON.name);
         for(const k in newJSON)
         {
-            console.log(newJSON[k].name);
+            // console.log(newJSON[k].name);
         }
         return respondJSON(request, response, 200, newJSON);
     }
     else
     {
-        return respondJSON(request, response, 404, {
-            message: "Character Not Found",
-            id: "Not Found",
-        });
+        // gets unexpected end of JSON input message
+        if(params.name == null)
+        {
+            return respondJSON(request, response, 204, {
+                message: "Type in search term"
+            });
+        }
+        else
+        {
+            return respondJSON(request, response, 404, {
+                message: "Character Not Found",
+                id: "Not Found",
+            });
+        }
     }
-
+    
     // return respondJSON(request, response,)
+}
+
+const addFavorite = (request, response, params) =>{
+
+}
+
+const removeFavorite = (request, response, params) =>{
+
 }
 
 const noContent = (request, response, input) => {
@@ -133,4 +209,6 @@ const noContent = (request, response, input) => {
 module.exports = {
     noContent,
     getCharacters,
+    addUser,
+    getUser,
 };

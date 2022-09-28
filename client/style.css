@@ -5,6 +5,16 @@ html, body {
   padding: 0;
 }
 
+#signIn, #signOut{
+  float: right;
+  display: flex; 
+  justify-content: end;
+}
+
+#signOut{
+  display: none;
+}
+
 #top {
   text-align: center;
   margin: 0 auto;
@@ -36,7 +46,8 @@ html, body {
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
-  display: flex;
+  /* display: flex; */
+  display: none;
   padding: 1em;
   /* visibility: hidden; */
   /* justify-content: center; */

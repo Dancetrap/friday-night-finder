@@ -5,8 +5,54 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            min-height: 90vh;
+        }
+
+        #login, #signup{
+            /* display: flex;
+            flex-direction: column; */
+            padding: 2em;
+        }
+
+        #loginForm, #signupForm{
+            display: flex;
+            flex-direction: column;
+        }
+
+        #get, #add{
+            width: 75px;
+            margin-top: 2em;
+        }
+    </style>
 </head>
 <body>
-    
+    <section id="login">
+        <form id="loginForm" action="/getUsers" method="post">
+            <h2>Login</h2>
+            <label for="username">Username: </label>
+            <input id="loginUser" type="text" name="username" />
+            <label for="password">Password: </label>
+            <input id="loginPassword" type="password" name="password" />
+            <input id="get" type="submit"/>
+            <p id="loginMessage"></p>
+          </form>
+    </section>
+    <section id="signup">
+        <form id="signupForm" action="/addUsers" method="post">
+            <h2>Sign Up</h2>
+            <label for="username">Username: </label>
+            <input id="signupUser" type="text" name="username" />
+            <label for="password">Password: </label>
+            <input id="signupPassword" type="password" name="password" />
+            <input id="add" type="submit"/>
+            <p id="signupMessage"></p>
+          </form>
+    </section>    
 </body>
 </html>

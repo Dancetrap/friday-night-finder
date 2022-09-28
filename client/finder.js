@@ -36,7 +36,7 @@ const init = () =>{
         return compareStrings(a.name, b.name);
     });
 
-    console.log(val);
+    // console.log(val);
 
     if(nameField.value == "")
     {
@@ -153,7 +153,7 @@ const charSelect = (char) => {
         selectedChar = null;
         infobox.style.display = "none";
     }
-    console.log(char);
+    // console.log(char);
     let character = char.id.split('Button')[0];
 
     if(character.includes('-'))

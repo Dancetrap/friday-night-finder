@@ -49,10 +49,14 @@ const handleGet = (request, response, parsedUrl) => {
     htmlHandler.getCSS(request, response);
   } else if (parsedUrl.pathname === '/finder.js') {
     htmlHandler.getJava(request, response);
+  } else if (parsedUrl.pathname === '/handler.js') {
+    htmlHandler.getJavaHandler(request, response);
   } else if (parsedUrl.pathname === '/characters.json') {
     htmlHandler.getJSONPrototype(request, response);
   } else if (parsedUrl.pathname === '/getCharacters') {
     jsonHandler.getCharacters(request, response, params)
+  } else if (parsedUrl.pathname === '/login.html'){
+    htmlHandler.getLogin(request, response);
   } else {
     htmlHandler.getIndex(request, response);
   }
