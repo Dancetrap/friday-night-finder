@@ -115,7 +115,7 @@ const addUser = (request, response, params) =>{
     // add and set given username
 };
 
-
+// This function is for the search bar. It returns all the characters that start with a specific letter(s) of the alphabet
 const getCharacters = (request, response, params) =>{
     search = [];
     
@@ -194,6 +194,26 @@ const getCharacters = (request, response, params) =>{
     // return respondJSON(request, response,)
 }
 
+// This function is for getting the character info
+const getCharacter = (request, response, params) =>{
+    if(!params.name) {
+        return respondJSON(request, response, 400, {
+          message: 'Missing name parameter',
+          id: 'getUserMissingName'
+        });
+      }
+    
+      const obj = users[params.name];
+    
+      if(obj) {
+        return respondJSON(request, response, 200, obj)
+      } else {
+        return respondJSON(request, response, 404, {
+          message: 'No user with that name',
+        });
+      }    
+}
+
 const addFavorite = (request, response, params) =>{
 
 }
@@ -222,6 +242,7 @@ const noContent = (request, response, input) => {
 module.exports = {
     noContent,
     getCharacters,
+    getCharacter,
     addUser,
     getUser,
 };

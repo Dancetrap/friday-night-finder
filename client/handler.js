@@ -203,15 +203,18 @@
             val.forEach(char => {
               // console.log(char);
                 let altName = '';
-                altName = char.name.replace(/ /g, "%20")
-                // if(char.alt != null) altName = char.alt;
-                // else altName = char.name;
+                altName = char.name.replace(/ /g, "%20");
+                const getCharacter = () => {characterInfo(altName)};
+                // Unexpected identifier
                 content.innerHTML += `<div id="${char.name}" style="margin: 5px;">
-                <button id="${altName}" class="character" origin="${char.origin}" mod="${char.mod}" icon="${char.icon}" style="background: rgba(0,0,0,0); border: none; cursor: pointer;">
+                <button id="${altName}" class="character" origin="${char.origin}" mod="${char.mod}" icon="${char.icon}" onclick="${getCharacter}" style="background: rgba(0,0,0,0); border: none; cursor: pointer;">
                 <img src="${char.imageURL}" alt="${char.name}" height="150px" style="object-fit: contain;" id="${char.name}Img"></img>
                 </button>
                 <p style="margin: 1px;">${char.name}</p>
                 </div>`;
+                // console.log(document.getElementById(altName).id);
+                // document.getElementById(altName).onclick = getCharacter;
+                // console.log(document.getElementById(altName).onclick);
             });
           }
           else if(response.status == 404)
@@ -241,4 +244,12 @@
     b = b.toLowerCase();
   
     return (a < b) ? -1 : (a > b) ? 1 : 0;
-};
+  };
+
+  const characterInfo = async (character) => {
+    const response = await fetch(`/getCharacters?name=${character}`);
+
+    const info = await response.json();
+
+    console.log(info);
+  }

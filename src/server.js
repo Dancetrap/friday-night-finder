@@ -57,6 +57,8 @@ const handleGet = (request, response, parsedUrl) => {
     jsonHandler.getUser(request, response, params)
   } else if (parsedUrl.pathname === '/getCharacters') {
     jsonHandler.getCharacters(request, response, params)
+  } else if (parsedUrl.pathname === '/getCharacter') {
+    jsonHandler.getCharacter(request, response, params)
   } else if (parsedUrl.pathname === '/login.html'){
     htmlHandler.getLogin(request, response);
   } else {
