@@ -180,31 +180,50 @@
       searchBox.addEventListener('input', async () => {
       // if searchBox.value includes a space, it will automatically put in a '%20' in between
         const response = await fetch(`/getCharacters?name=${searchBox.value}`);
-
         // This is where the Unexpected end of JSON input error happens
-        const obj = await response.json();
+        // console.log(response);
+        // console.log(await response.json());
 
-        // This is so I can get the info from the parsed JSON
-        globalJSON = obj;
+        // if(searchBox.value != '')
+        // {
+          const obj = await response.json();
+          // console.log(obj);
+          // This is so I can get the info from the parsed JSON
+          
+          if(response.status == 200)
+          {
+            globalJSON = obj;
+  
+            const val = Object.values(obj).sort(function(a, b) {
+              return compareStrings(a.name, b.name);
+            });
+    
+            content.innerHTML = '';
+            // Object.values(obj).forEach(char => {
+            val.forEach(char => {
+              // console.log(char);
+                let altName = '';
+                if(char.alt != null) altName = char.alt;
+                else altName = char.name;
+                content.innerHTML += `<div id="${char.name}" style="margin: 5px;">
+                <button id="${char.name}Button" class="character" origin="${char.origin}" mod="${char.mod}" icon="${char.icon}" style="background: rgba(0,0,0,0); border: none; cursor: pointer;">
+                <img src="${char.imageURL}" alt="${char.name}" height="150px" style="object-fit: contain;" id="${char.name}Img"></img>
+                </button>
+                <p style="margin: 1px;">${altName}</p>
+                </div>`;
+            });
+          }
+          else if(response.status == 404)
+          {
+              content.innerHTML = `<h4>Error: ${obj.message}</h4>`;
+          }
+        // }
+        // else
+        // {
+        //   content.innerHTML = ``;
+        // }
 
-        const val = Object.values(obj).sort(function(a, b) {
-          return compareStrings(a.name, b.name);
-        });
 
-        content.innerHTML = '';
-        // Object.values(obj).forEach(char => {
-        val.forEach(char => {
-          console.log(char);
-            let altName = '';
-            if(char.alt != null) altName = char.alt;
-            else altName = char.name;
-            content.innerHTML += `<div id="${char.name}" style="margin: 5px;">
-            <button id="${char.name}Button" class="character" origin="${char.origin}" mod="${char.mod}" icon="${char.icon}" style="background: rgba(0,0,0,0); border: none; cursor: pointer;">
-            <img src="${char.imageURL}" alt="${char.name}" height="150px" style="object-fit: contain;" id="${char.name}Img"></img>
-            </button>
-            <p style="margin: 1px;">${altName}</p>
-            </div>`;
-        });
         // for(let k of obj)
         // {
         //   console.log(obj[k]);

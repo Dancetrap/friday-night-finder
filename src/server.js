@@ -54,9 +54,9 @@ const handleGet = (request, response, parsedUrl) => {
   } else if (parsedUrl.pathname === '/characters.json') {
     htmlHandler.getJSONPrototype(request, response);
   } else if (parsedUrl.pathname === '/getUser') {
-    jsonHandler.getCharacters(request, response, params)
-  } else if (parsedUrl.pathname === '/getCharacters') {
     jsonHandler.getUser(request, response, params)
+  } else if (parsedUrl.pathname === '/getCharacters') {
+    jsonHandler.getCharacters(request, response, params)
   } else if (parsedUrl.pathname === '/login.html'){
     htmlHandler.getLogin(request, response);
   } else {
@@ -80,7 +80,7 @@ const onRequest = (request, response) => {
   // }
   const parsedUrl = url.parse(request.url);
   if (request.method === 'post') {
-    console.log(request);
+    console.log(request.method);
     handlePost(request, response, parsedUrl);
   }
   else
@@ -92,5 +92,5 @@ const onRequest = (request, response) => {
 
 // With the above onRequest and port, we can make a server.
 http.createServer(onRequest).listen(port, () => {
-  console.log(`Listening on port: ${port}`);
+  console.log(`Getting freaky on Port ${port}`);
 });

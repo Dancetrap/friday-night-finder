@@ -119,7 +119,7 @@ const addUser = (request, response, params) =>{
 const getCharacters = (request, response, params) =>{
     search = [];
     
-    if(!params.name){
+    if(!params.name || params.name == ''){
         return respondJSON(request, response, 204, {
             message: "Type in search term"
         });
@@ -155,7 +155,7 @@ const getCharacters = (request, response, params) =>{
         }
 
     }
-        console.log(search);
+        // console.log(search);
         const newJSON = {
             ...search,
         }
@@ -164,7 +164,7 @@ const getCharacters = (request, response, params) =>{
     const obj = characters[params.name];
     console.log(params.name);
 
-    
+
     if(JSON.stringify(newJSON) != '{}'){
         // console.log(newJSON.name);
         for(const k in newJSON)
@@ -176,7 +176,7 @@ const getCharacters = (request, response, params) =>{
     else
     {
         // gets unexpected end of JSON input message
-        if(params.name == null)
+        if(params.name == '')
         {
             return respondJSON(request, response, 204, {
                 message: "Type in search term"
