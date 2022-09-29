@@ -48,7 +48,7 @@ const respondJSONMeta = (request, response, status) => {
 
 const getUser = (request, response, params) =>{
     const responseJSON = {
-        message: 'Name and age are both required.',
+        message: 'Username and Password are required',
     };
     if (!params.username || !params.password) {
         responseJSON.id = 'missingParams';

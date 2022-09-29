@@ -48,9 +48,9 @@ const handleResponse = async (response, message) => {
     }
 
     let obj = await response.json();
-    console.log(obj);
-    // Null
-    // message.innerHTML = `<p>${obj.message}</p>`;
+    console.log(obj.message);
+    console.log(response.status);
+    if(response.status == 400) message.innerHTML = `${obj.message}`;
     
     //If we have a message, display it.
     // if(obj.message){
@@ -66,7 +66,7 @@ const sendPost = async (signUp) => {
     const userField = signUp.querySelector('#user');
     const passField = signUp.querySelector('#password');
 
-    const message = signUp.querySelector('#loginMessage');
+    const message = document.querySelector('#signupMessage');
     //Build a data string in the FORM-URLENCODED format.
 
     const formData = `username=${userField.value}&password=${passField.value}`;
@@ -91,9 +91,15 @@ const sendPost = async (signUp) => {
 
     if(response.status == 201)
     {   
+        message.innerHTML = '';
         sessionStorage.setItem("username",userField.value)
         sessionStorage.setItem("password",passField.value)
         window.location.href="client.html";
+    }
+    else
+    {
+        userField.style.border = "1px solid #FF0000";
+        passField.style.border = "1px solid #FF0000";
     }
 };
 
@@ -105,7 +111,8 @@ const sendGet = async (nameForm) => {
     const userField = nameForm.querySelector('#user');
     const passField = nameForm.querySelector('#password');
 
-    const message = nameForm.querySelector('#signupMessage');
+    const message = document.querySelector('#loginMessage');
+    console.log(message);
 
     //Build a data string in the FORM-URLENCODED format.
     const formData = `?username=${userField.value}&password=${passField.value}`;
@@ -124,9 +131,15 @@ const sendGet = async (nameForm) => {
 
     if(response.status == 200)
     {   
+        message.innerHTML = '';
         sessionStorage.setItem("username",userField.value)
         sessionStorage.setItem("password",passField.value)
         window.location.href="client.html";
+    }
+    else
+    {
+        userField.style.border = "1px solid #FF0000";
+        passField.style.border = "1px solid #FF0000";
     }
 };
 
