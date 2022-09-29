@@ -169,7 +169,7 @@ const sendGet = async (nameForm) => {
     }
 
     signUp.addEventListener('submit',addUser);
-    // login.addEventListener('submit', getUser);
+    login.addEventListener('submit', getUser);
 
   };
 
