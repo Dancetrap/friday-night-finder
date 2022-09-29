@@ -11,11 +11,12 @@ if(sessionStorage.getItem("username") != null)
 
 if(sessionStorage.getItem("password") != null)
 {
-  yourUsername = sessionStorage.getItem("password");
+  yourPassword = sessionStorage.getItem("password");
 }
 
 // If user list is empty, then send username and password as null
 
+// const formData = `username=${yourUsername}&password=${yourPassword}`;
 
 const handleResponse = async (response) => {
       
