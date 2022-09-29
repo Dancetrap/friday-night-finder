@@ -103,12 +103,12 @@ const addUser = (request, response, params) =>{
 
     users[params.username].username = params.username;
     users[params.username].password = params.password;
-    users[params.username].favorites = {};
   
     //if response is created, then set our created message
     //and sent response with a message
     if (responseCode === 201) {
       responseJSON.message = 'Created Successfully';
+      responseJSON.favorites = {};
       return respondJSON(request, response, responseCode, responseJSON);
     }
 

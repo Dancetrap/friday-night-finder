@@ -48,7 +48,7 @@ const handleResponse = async (response) => {
 
     let obj = await response.json();
 
-    console.log(obj);
+    console.log(Object.values(obj));
     
     //If we have a message, display it.
     // if(obj.message){
@@ -89,7 +89,7 @@ const sendPost = async (signUp) => {
     {   
         sessionStorage.setItem("username",userField.value)
         sessionStorage.setItem("password",passField.value)
-        window.location.href="client.html";
+        // window.location.href="client.html";
     }
 };
 
