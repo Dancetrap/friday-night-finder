@@ -14,6 +14,8 @@ if(sessionStorage.getItem("password") != null)
   yourUsername = sessionStorage.getItem("password");
 }
 
+// If user list is empty, then send username and password as null
+
 
 const handleResponse = async (response) => {
       

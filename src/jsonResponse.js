@@ -54,12 +54,14 @@ const getUser = (request, response, params) =>{
         responseJSON.id = 'missingParams';
         return respondJSON(request, response, 400, responseJSON);
     }
+
+    let responseCode = 204;
     
     if(users[params.username])
     {
         if(params.password == users[params.username].password)
         {
-            responseCode = 201;
+            responseCode = 200;
         }
         else
         {
@@ -68,7 +70,7 @@ const getUser = (request, response, params) =>{
             return respondJSON(request, response, 400, responseJSON);
         }
 
-        if (responseCode === 201) {
+        if (responseCode === 200) {
             responseJSON.message = 'Load Successfully';
             return respondJSON(request, response, responseCode, responseJSON);
         }

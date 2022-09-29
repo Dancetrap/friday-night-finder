@@ -13,7 +13,7 @@ sessionStorage.removeItem("username")
 sessionStorage.removeItem("password")
 
 
-const handleResponse = async (response) => {
+const handleResponse = async (response, message) => {
       
     //Grab the content section
     // const content = document.querySelector('#content');
@@ -40,13 +40,17 @@ const handleResponse = async (response) => {
     //Parse the response to json. This works because we know the server always
     //sends back json. Await because .json() is an async function.
 
+    console.log(response);
     if(response.status == 204)
     {
+        message.innerHTML = `Empty parameters`;
         return;
     }
 
     let obj = await response.json();
-
+    console.log(obj);
+    // Null
+    // message.innerHTML = `<p>${obj.message}</p>`;
     
     //If we have a message, display it.
     // if(obj.message){
@@ -62,7 +66,9 @@ const sendPost = async (signUp) => {
     const userField = signUp.querySelector('#user');
     const passField = signUp.querySelector('#password');
 
+    const message = signUp.querySelector('#loginMessage');
     //Build a data string in the FORM-URLENCODED format.
+
     const formData = `username=${userField.value}&password=${passField.value}`;
 
     //Make a fetch request and await a response. Set the method to
@@ -81,7 +87,7 @@ const sendPost = async (signUp) => {
     
 
     //Once we have a response, handle it.
-    handleResponse(response);
+    handleResponse(response, message);
 
     if(response.status == 201)
     {   
@@ -99,27 +105,22 @@ const sendGet = async (nameForm) => {
     const userField = nameForm.querySelector('#user');
     const passField = nameForm.querySelector('#password');
 
-    //Build a data string in the FORM-URLENCODED format.
-    const formData = `username=${userField.value}&password=${passField.value}`;
+    const message = nameForm.querySelector('#signupMessage');
 
-    let response = await fetch(formData, {
-        method: nameMethod,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json',
-        },
-    });
+    //Build a data string in the FORM-URLENCODED format.
+    const formData = `?username=${userField.value}&password=${passField.value}`;
 
     // let response = await fetch(nameAction, {
-    //   method: nameMethod,
-    //   headers: {
-    //     'Content-Type': 'application/x-www-form-urlencoded',
-    //     'Accept': 'application/json',
-    //   },
+    //     method: nameMethod,
+    //     headers: {
+    //       'Content-Type': 'application/x-www-form-urlencoded',
+    //       'Accept': 'application/json',
+    //     },
+    //     // body: formData,
     // });
-
+    let response = await fetch(`/getUser${formData}`);
     //Once we have a response, handle it.
-    handleResponse(response);
+    handleResponse(response, message);
 
     if(response.status == 200)
     {   
