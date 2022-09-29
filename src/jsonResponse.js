@@ -87,12 +87,14 @@ const getUser = (request, response, params) =>{
 
 const addUser = (request, response, params) =>{
     const responseJSON = {
-        message: 'Name and age are both required.',
+        message: 'Username and Password are required',
     };
     if (!params.username || !params.password) {
         responseJSON.id = 'missingParams';
         return respondJSON(request, response, 400, responseJSON);
     }
+
+    let responseCode = 204;
 
     if(!users[params.username]) {
         responseCode = 201;
@@ -120,9 +122,7 @@ const getCharacters = (request, response, params) =>{
     search = [];
     
     if(!params.name || params.name == ''){
-        return respondJSON(request, response, 204, {
-            message: "Type in search term"
-        });
+        return respondJSONMeta(request, response, 204);
         // return respondJSON(request, response, 200, params);
     }
 
@@ -178,9 +178,7 @@ const getCharacters = (request, response, params) =>{
         // gets unexpected end of JSON input message
         if(params.name == '')
         {
-            return respondJSON(request, response, 204, {
-                message: "Type in search term"
-            });
+            return respondJSONMeta(request, response, 204)
         }
         else
         {
@@ -191,7 +189,7 @@ const getCharacters = (request, response, params) =>{
         }
     }
     
-    // return respondJSON(request, response,)
+    
 }
 
 // This function is for getting the character info

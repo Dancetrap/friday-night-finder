@@ -8,9 +8,30 @@ const url = require('url'); // url module
 const query = require('querystring'); // query module
 const htmlHandler = require('./htmlResponse.js');
 const jsonHandler = require('./jsonResponse.js');
+const mediaHandler = require('./mediaResponse.js');
 
 // Either use a port given to us by heroku, or port 3000
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
+
+const urlStruct = {
+  GET: {
+    '/': htmlHandler.getIndex,
+    '/login.html': htmlHandler.getLogin,
+    '/style.css': htmlHandler.getCSS,
+    '/handler.js': htmlHandler.getJavaHandler,
+    '/login.js': htmlHandler.getJavaLogin,
+    '/getUser': jsonHandler.getUser,
+    '/getCharacters': jsonHandler.getCharacters,
+    '/getCharacter': jsonHandler.getCharacter,
+    '/characters.json' : htmlHandler.getJSONPrototype,
+    '/favorite.png' : mediaHandler.getChecked,
+    '/unfavorite.png' : mediaHandler.getUnchecked,
+  },
+  HEAD: {
+    // '/getUsers': jsonHandler.getUsersMeta,
+    notFound: jsonHandler.notFoundMeta,
+  },
+};
 
 const parseBody = (request, response, handler) => {
   // The request will come in in pieces. We will store those pieces in this
@@ -37,6 +58,8 @@ const parseBody = (request, response, handler) => {
 
 const handlePost = (request, response, parsedUrl) => {
   // If they decide to favorite the character
+
+  // If they decide to sign up
   if (parsedUrl.pathname === '/addUser') {
     parseBody(request, response, jsonHandler.addUser);
   }
@@ -51,6 +74,8 @@ const handleGet = (request, response, parsedUrl) => {
     htmlHandler.getJava(request, response);
   } else if (parsedUrl.pathname === '/handler.js') {
     htmlHandler.getJavaHandler(request, response);
+  } else if (parsedUrl.pathname === '/login.js') {
+    htmlHandler.getJavaLogin(request, response);
   } else if (parsedUrl.pathname === '/characters.json') {
     htmlHandler.getJSONPrototype(request, response);
   } else if (parsedUrl.pathname === '/getUser') {
@@ -61,9 +86,23 @@ const handleGet = (request, response, parsedUrl) => {
     jsonHandler.getCharacter(request, response, params)
   } else if (parsedUrl.pathname === '/login.html'){
     htmlHandler.getLogin(request, response);
+  } else if (parsedUrl.pathname === '/favorite.png'){
+    mediaHandler.getChecked(request, response)
+  } else if (parsedUrl.pathname === '/unfavorite.png'){
+    mediaHandler.getUnchecked(request, response)
   } else {
     htmlHandler.getIndex(request, response);
   }
+
+  // Do urlStruct function in this server
+
+  // console.log(urlStruct[request.method][parsedUrl.pathname].response);
+  // return urlStruct[request.method][parsedUrl.pathname](request, response, params);
+
+  // if (urlStruct[request.method][parsedUrl.pathname]) {
+  //   return urlStruct[request.method][parsedUrl.pathname](request, response, acceptedTypes, params);
+  // }
+  // return urlStruct[request.method].notFound(request, response, acceptedTypes, params);
 };
 
 // This function is called per request. The request and response
@@ -81,7 +120,7 @@ const onRequest = (request, response) => {
   //   htmlHandler.getIndex(request, response);
   // }
   const parsedUrl = url.parse(request.url);
-  if (request.method === 'post') {
+  if (request.method === 'POST') {
     console.log(request.method);
     handlePost(request, response, parsedUrl);
   }

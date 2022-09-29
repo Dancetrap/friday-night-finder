@@ -1,6 +1,20 @@
 let selectedChar = null;
 const box = document.getElementById('infobox');
 
+let yourUsername = null;
+let yourPassword = null;
+
+if(sessionStorage.getItem("username") != null)
+{
+  yourUsername = sessionStorage.getItem("username");
+}
+
+if(sessionStorage.getItem("password") != null)
+{
+  yourUsername = sessionStorage.getItem("password");
+}
+
+
 const handleResponse = async (response) => {
       
       //Grab the content section
@@ -69,6 +83,19 @@ const handleResponse = async (response) => {
 
     //Init function is called when window.onload runs (set below).
     const init = () => {
+      const sIn = document.querySelector("#signIn");
+      const sOut = document.querySelector("#signOut");
+
+      if(yourUsername != null)
+      {
+        sIn.style.display = "none";
+        sOut.style.display = "flex";
+      }
+      else
+      {
+        sIn.style.display = "flex";
+        sOut.style.display = "none";
+      }
       //Grab the form
       const nameForm = document.querySelector('#nameForm');
 
@@ -162,7 +189,6 @@ const handleResponse = async (response) => {
 
     const infobox = await response.json();
 
-    console.log(infobox);
     const box = document.getElementById('infobox');
     if(character != selectedChar){
       selectedChar = character;

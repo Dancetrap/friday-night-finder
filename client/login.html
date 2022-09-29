@@ -6,9 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
-        body{
+        #logginSession{
             display: flex;
             flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
+        body{
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 90vh;
@@ -30,29 +37,33 @@
             margin-top: 2em;
         }
     </style>
+    <script type="text/javascript" src="/login.js"></script>
 </head>
 <body>
+    <div id="logginSession">
     <section id="login">
-        <form id="loginForm" action="/getUser" method="get">
+        <form id="loginForm" action="/getUser" method="GET">
             <h2>Login</h2>
             <label for="username">Username: </label>
-            <input id="loginUser" type="text" name="username" />
+            <input id="user" type="text" name="username" />
             <label for="password">Password: </label>
-            <input id="loginPassword" type="password" name="password" />
+            <input id="password" type="password" name="password" />
             <input id="get" type="submit"/>
             <p id="loginMessage"></p>
           </form>
     </section>
     <section id="signup">
-        <form id="signupForm" action="/addUser" method="post">
+        <form id="signupForm" action="/addUser" method="POST">
             <h2>Sign Up</h2>
             <label for="username">Username: </label>
-            <input id="signupUser" type="text" name="username" />
+            <input id="user" type="text" name="username" />
             <label for="password">Password: </label>
-            <input id="signupPassword" type="password" name="password" />
+            <input id="password" type="password" name="password" />
             <input id="add" type="submit"/>
             <p id="signupMessage"></p>
           </form>
-    </section>    
+    </section>
+</div>    
+<h3 id="warning">Warning: Passwords are not guranteed to be secure.</h3>
 </body>
 </html>
