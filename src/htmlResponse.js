@@ -20,6 +20,7 @@ const getIndex = (request, response) => {
   response.end();
 };
 
+// function to get login page
 const getLogin = (request, response) => {
   response.writeHead(200, { 'Content-Type': 'text/html' });
   response.write(login);
@@ -39,24 +40,28 @@ const getCSS = (request, response) => {
   response.end();
 };
 
+// old function that won't be used. should probably get rid of
 const getJava = (request, response) => {
   response.writeHead(200, { 'Content-Type': 'text/javascript' });
   response.write(js);
   response.end();
 };
 
+// gets handler function for client.html
 const getJavaHandler = (request, response) => {
   response.writeHead(200, { 'Content-Type': 'text/javascript' });
   response.write(jstwo);
   response.end();
 };
 
+// gets login function for login.html
 const getJavaLogin = (request, response) => {
   response.writeHead(200, { 'Content-Type': 'text/javascript' });
   response.write(jsthree);
   response.end();
 };
 
+// get JSON file
 const getJSONPrototype = (request, response) => {
   response.writeHead(200, { 'Content-Type': 'application/json' });
   response.write(json);

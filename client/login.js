@@ -40,7 +40,6 @@ const handleResponse = async (response) => {
     //Parse the response to json. This works because we know the server always
     //sends back json. Await because .json() is an async function.
 
-    console.log(response);
     if(response.status == 204)
     {
         return;
@@ -48,7 +47,6 @@ const handleResponse = async (response) => {
 
     let obj = await response.json();
 
-    console.log(Object.values(obj));
     
     //If we have a message, display it.
     // if(obj.message){
@@ -89,7 +87,7 @@ const sendPost = async (signUp) => {
     {   
         sessionStorage.setItem("username",userField.value)
         sessionStorage.setItem("password",passField.value)
-        // window.location.href="client.html";
+        window.location.href="client.html";
     }
 };
 
@@ -127,7 +125,7 @@ const sendGet = async (nameForm) => {
     {   
         sessionStorage.setItem("username",userField.value)
         sessionStorage.setItem("password",passField.value)
-        window.location.href="/client.html";
+        window.location.href="client.html";
     }
 };
 
