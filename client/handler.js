@@ -96,6 +96,11 @@ const handleResponse = async (response) => {
         sIn.style.display = "flex";
         sOut.style.display = "none";
       }
+      
+      sOut.addEventListener('submit',function(){
+        sessionStorage.removeItem("username")
+        sessionStorage.removeItem("password")
+      });
       //Grab the form
       const nameForm = document.querySelector('#nameForm');
 
@@ -167,6 +172,8 @@ const handleResponse = async (response) => {
               content.innerHTML = `<h4>Error: ${obj.message}</h4>`;
           }
       });
+
+      
     };
 
     //When the window loads, run init.
