@@ -223,6 +223,7 @@ const getCharacter = (request, response, params) =>{
       }    
 }
 
+// Used for the heart icon
 const getFavorite = (request, response, params) =>{
     if(!params.newFavorite)
     {
@@ -267,7 +268,6 @@ const addFavorite = (request, response, params) =>{
     return respondJSON(request, response, 201, {message: "Successfully Added!"})
 }
 
-// addFavorite()
 
 const removeFavorite = (request, response, params) =>{
     if(params.username != null && users[params.username] && !params.newFavorite && characters[params.newFavorite])
@@ -280,14 +280,14 @@ const removeFavorite = (request, response, params) =>{
 
     const exist = users[params.username].favorites.includes(params.newFavorite);
 
-    if(exist)
+    if(!exist)
     {
         return respondJSON(request, response, 204, {
             message: 'Character Does Not Exists',
           });
     }
-
-    users[params.username].favorites.remove(params.newFavorite);
+    let index = users[params.username].favorites.indexOf(params.newFavorite);
+    users[params.username].favorites.splice(index, 1);
     return respondJSON(request, response, 200, {message: "Successfully Removed!"})
 }
 

@@ -175,8 +175,11 @@ const handleResponse = async (response) => {
               content.innerHTML = `<h4>Error: ${obj.message}</h4>`;
           }
       });
-        let add = () => favorite(document.getElementById('/addFavorite'))
+        let add = () => favorite(document.getElementById('/addFavorite'),document.getElementById('/removeFavorite'))
+        let remove = () => favorite(document.getElementById('/removeFavorite'),document.getElementById('/addFavorite'))
         document.getElementById('/addFavorite').addEventListener('click',add);
+        document.getElementById('/removeFavorite').addEventListener('click',remove);
+
         if(yourUsername == null) document.getElementById('buttons').style.display = "none";
         else document.getElementById('buttons').style.display = "block";
     };
@@ -199,6 +202,7 @@ const handleResponse = async (response) => {
   const characterInfo = async (character) => {
     const response = await fetch(`/getCharacter?name=${character}`);
     const infobox = await response.json();
+    console.log(infobox);
 
     const box = document.getElementById('infobox');
     if(character != selectedChar){
@@ -261,7 +265,7 @@ const handleResponse = async (response) => {
     }
   }
 
-  const favorite = async (character) => {
+  const favorite = async (character, on) => {
     const characterAction = character.getAttribute('id');
     const characterMethod = character.getAttribute('class');
 
@@ -275,12 +279,8 @@ const handleResponse = async (response) => {
       },
       body: data,
     });
-
-    if(response.status == 201)
-    {
-      document.getElementById('/removeFavorite').style.display = "block";
-      document.getElementById('/addFavorite').style.display = "none";
-    }
+      on.style.display = "block";
+      character.style.display = "none";
 
     // console.log(Object.values(obj));
 
