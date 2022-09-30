@@ -175,8 +175,10 @@ const handleResponse = async (response) => {
               content.innerHTML = `<h4>Error: ${obj.message}</h4>`;
           }
       });
-
-      
+        let add = () => favorite(document.getElementById('/addFavorite'))
+        document.getElementById('/addFavorite').addEventListener('click',add);
+        if(yourUsername == null) document.getElementById('/addFavorite').style.display = "none";
+        else document.getElementById('/addFavorite').style.display = "block";
     };
 
     //When the window loads, run init.
@@ -195,7 +197,7 @@ const handleResponse = async (response) => {
   };
 
   const characterInfo = async (character) => {
-    const response = await fetch(`/getCharacters?name=${character}`);
+    const response = await fetch(`/getCharacter?name=${character}`);
 
     const infobox = await response.json();
 
@@ -209,8 +211,8 @@ const handleResponse = async (response) => {
       selectedChar = null;
       box.style.display = "none";
     }
-
-    const info = Object.values(infobox);
+    console.log(infobox);
+    // const info = Object.values(infobox);
 
     // console.log(info);
 
@@ -236,8 +238,43 @@ const handleResponse = async (response) => {
         document.getElementById('name').innerHTML = capitalizeFirstLetter(character);
     }
 
-    document.getElementById('baseImg').src = info[0].imageURL;
-    document.getElementById('icons').src = info[0].icon;
-    document.getElementById('origin').innerHTML = info[0].origin;
-    document.getElementById('mod').innerHTML = info[0].mod;
+    document.getElementById('baseImg').src = infobox.imageURL;
+    document.getElementById('icons').src = infobox.icon;
+    document.getElementById('origin').innerHTML = infobox.origin;
+    document.getElementById('mod').innerHTML = infobox.mod;
+  }
+
+  const favorite = async (character) => {
+    const characterAction = character.getAttribute('id');
+    const characterMethod = character.getAttribute('class');
+
+    // const username = yourUsername;
+    // const characterName = selectedChar;
+
+    // const data = `?username=${username}?newFavorite=${characterName}`;
+    const getChar = await fetch(`/getCharacter?name=${selectedChar}`);
+    let obj = await getChar.json();
+    // obj = JSON.stringify(Object.values(obj)[0]);
+    console.log(obj);
+
+    const data = `username=${yourUsername}&newFavorite=${obj}`;
+
+    // Need to grab the entire json
+    let response = await fetch(characterAction, {
+      method: characterMethod,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Accept': 'application/json',
+      },
+      body: data,
+    });
+
+    // console.log(Object.values(obj));
+
+    // let obj = await response.json();
+  }
+
+  const fetchCharacter = async (character) =>
+  {
+
   }

@@ -16,16 +16,19 @@ const port = process.env.PORT || process.env.NODE_PORT || 3000;
 const urlStruct = {
   GET: {
     '/': htmlHandler.getIndex,
+    '/client.html': htmlHandler.getIndex,
     '/login.html': htmlHandler.getLogin,
     '/style.css': htmlHandler.getCSS,
     '/handler.js': htmlHandler.getJavaHandler,
     '/login.js': htmlHandler.getJavaLogin,
     '/getUser': jsonHandler.getUser,
+    '/getUsers': jsonHandler.getUsers,
     '/getCharacters': jsonHandler.getCharacters,
     '/getCharacter': jsonHandler.getCharacter,
     '/characters.json' : htmlHandler.getJSONPrototype,
     '/favorite.png' : mediaHandler.getChecked,
     '/unfavorite.png' : mediaHandler.getUnchecked,
+    notFound: jsonHandler.notFound,
   },
   HEAD: {
     // '/getUsers': jsonHandler.getUsersMeta,
@@ -63,41 +66,55 @@ const handlePost = (request, response, parsedUrl) => {
   if (parsedUrl.pathname === '/addUser') {
     parseBody(request, response, jsonHandler.addUser);
   }
+  else if(parsedUrl.pathname === '/addFavorite') {
+    parseBody(request, response, jsonHandler.addFavorite);
+  }
+  else if(parsedUrl.pathname === '/removeFavorite') {
+    parseBody(request, response, jsonHandler.addFavorite);
+  }
 };
 
 const handleGet = (request, response, parsedUrl) => {
   const params = query.parse(parsedUrl.query);
   // route to correct method based on url
-  if (parsedUrl.pathname === '/style.css') {
-    htmlHandler.getCSS(request, response);
-  } else if (parsedUrl.pathname === '/finder.js') {
-    htmlHandler.getJava(request, response);
-  } else if (parsedUrl.pathname === '/handler.js') {
-    htmlHandler.getJavaHandler(request, response);
-  } else if (parsedUrl.pathname === '/login.js') {
-    htmlHandler.getJavaLogin(request, response);
-  } else if (parsedUrl.pathname === '/characters.json') {
-    htmlHandler.getJSONPrototype(request, response);
-  } else if (parsedUrl.pathname === '/getUser') {
-    jsonHandler.getUser(request, response, params)
-  } else if (parsedUrl.pathname === '/getCharacters') {
-    jsonHandler.getCharacters(request, response, params)
-  } else if (parsedUrl.pathname === '/getCharacter') {
-    jsonHandler.getCharacter(request, response, params)
-  } else if (parsedUrl.pathname === '/login.html'){
-    htmlHandler.getLogin(request, response);
-  } else if (parsedUrl.pathname === '/favorite.png'){
-    mediaHandler.getChecked(request, response)
-  } else if (parsedUrl.pathname === '/unfavorite.png'){
-    mediaHandler.getUnchecked(request, response)
-  } else {
-    htmlHandler.getIndex(request, response);
-  }
+  // if (parsedUrl.pathname === '/style.css') {
+  //   htmlHandler.getCSS(request, response);
+  // } else if (parsedUrl.pathname === '/finder.js') {
+  //   htmlHandler.getJava(request, response);
+  // } else if (parsedUrl.pathname === '/handler.js') {
+  //   htmlHandler.getJavaHandler(request, response);
+  // } else if (parsedUrl.pathname === '/login.js') {
+  //   htmlHandler.getJavaLogin(request, response);
+  // } else if (parsedUrl.pathname === '/characters.json') {
+  //   htmlHandler.getJSONPrototype(request, response);
+  // } else if (parsedUrl.pathname === '/getUser') {
+  //   jsonHandler.getUser(request, response, params)
+  // } else if (parsedUrl.pathname === '/getUsers') {
+  //   jsonHandler.getUsers(request, response)
+  // } else if (parsedUrl.pathname === '/getCharacters') {
+  //   jsonHandler.getCharacters(request, response, params)
+  // } else if (parsedUrl.pathname === '/getCharacter') {
+  //   jsonHandler.getCharacter(request, response, params)
+  // } else if (parsedUrl.pathname === '/login.html'){
+  //   htmlHandler.getLogin(request, response);
+  // } else if (parsedUrl.pathname === '/favorite.png'){
+  //   mediaHandler.getChecked(request, response)
+  // } else if (parsedUrl.pathname === '/unfavorite.png'){
+  //   mediaHandler.getUnchecked(request, response)
+  // } else {
+  //   htmlHandler.getIndex(request, response);
+  // }
 
   // Do urlStruct function in this server
 
   // console.log(urlStruct[request.method][parsedUrl.pathname].response);
-  // return urlStruct[request.method][parsedUrl.pathname](request, response, params);
+  if (urlStruct[request.method][parsedUrl.pathname]) {
+    return urlStruct[request.method][parsedUrl.pathname](request, response, params);
+  }
+  else
+  {
+    return urlStruct[request.method].notFound(request, response, params);
+  }
 
   // if (urlStruct[request.method][parsedUrl.pathname]) {
   //   return urlStruct[request.method][parsedUrl.pathname](request, response, acceptedTypes, params);

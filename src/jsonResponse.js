@@ -46,6 +46,15 @@ const respondJSONMeta = (request, response, status) => {
     response.end();
 };
 
+// debugPurposes
+const getUsers = (request, response) => {
+    const responseJSON = {
+      users,
+    };
+  
+    respondJSON(request, response, 200, responseJSON);
+  };
+
 const getUser = (request, response, params) =>{
     const responseJSON = {
         message: 'Username and Password are required',
@@ -105,12 +114,12 @@ const addUser = (request, response, params) =>{
 
     users[params.username].username = params.username;
     users[params.username].password = params.password;
+    users[params.username].favorites = [];
   
     //if response is created, then set our created message
     //and sent response with a message
     if (responseCode === 201) {
       responseJSON.message = 'Created Successfully';
-      responseJSON.favorites = {};
       return respondJSON(request, response, responseCode, responseJSON);
     }
 
@@ -203,7 +212,7 @@ const getCharacter = (request, response, params) =>{
         });
       }
     
-      const obj = users[params.name];
+      const obj = characters[params.name];
     
       if(obj) {
         return respondJSON(request, response, 200, obj)
@@ -214,13 +223,66 @@ const getCharacter = (request, response, params) =>{
       }    
 }
 
-const addFavorite = (request, response, params) =>{
-
+const getFavorite = (request, response, params) =>{
+    if(!params.name)
+    {
+        return respondJSON(request, response, 400, {
+            message: 'Missing name parameter',
+            id: 'getUserMissingName'
+          });
+    }
+    // const obj = users[params.name].favorites;
+    const obj = users[params.username].favorites[characters[params.name]];
+    
+    if(obj) {
+      return respondJSON(request, response, 200, obj)
+    } else {
+      return respondJSON(request, response, 404, {
+        message: 'No user with that name',
+      });
+    }    
 }
+
+const addFavorite = (request, response, params) =>{
+    if(params.username != null && users[params.username] && !params.newFavorite && characters[params.newFavorite])
+    {
+        return respondJSON(request, response, 400, {
+            message: 'No username or character',
+            id: 'getUserMissingName'
+          });
+    }
+
+    // const formData = `username=${nameField.value}&newFavorite=${ageField.value}`;
+    // Ask how to prevent a repeat of favoriting a character
+    users[params.username].favorites.push(params.newFavorite);
+    return respondJSON(request, response, 200, {message: "Successfully Added!"})
+}
+
+// addFavorite()
 
 const removeFavorite = (request, response, params) =>{
+    if(!params.username && users[params.username] && !params.newFavorite && characters[params.newFavorite])
+    {
+        // return error;
+    }
 
+    // const formData = `username=${nameField.value}&newFavorite=${ageField.value}`;
+    users[params.username].favorites.remove(params.newFavorite);
+    return respondJSON(request, response, 200, {message: "Successfully Removed!"})
 }
+
+const getFavorites = (request, response, params) => {
+    // If no username, check for error
+
+    let favorites = [];
+    users[params.username].favorites.forEach(favorite =>{
+        favorites.push(characters[favorite]);
+    });
+
+    // send back as json
+}
+
+// For determining whether or not the heart has been checked
 
 const noContent = (request, response, input) => {
     const responseJSON = {
@@ -239,10 +301,25 @@ const noContent = (request, response, input) => {
     return respondJSON(request, response, 204, responseJSON);
 }
 
+const notFound = (request, response) => {
+    const responseJSON = {
+        message: 'The page you are looking for was not found',
+        id: 'notFound',
+      };
+
+      return respondJSON(request, response, 404, responseJSON);
+}
+
 module.exports = {
     noContent,
     getCharacters,
     getCharacter,
     addUser,
     getUser,
+    getUsers,
+    addFavorite,
+    removeFavorite,
+    getFavorites,
+    getFavorite,
+    notFound,
 };
