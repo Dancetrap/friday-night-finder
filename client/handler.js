@@ -177,8 +177,8 @@ const handleResponse = async (response) => {
       });
         let add = () => favorite(document.getElementById('/addFavorite'))
         document.getElementById('/addFavorite').addEventListener('click',add);
-        if(yourUsername == null) document.getElementById('/addFavorite').style.display = "none";
-        else document.getElementById('/addFavorite').style.display = "block";
+        if(yourUsername == null) document.getElementById('buttons').style.display = "none";
+        else document.getElementById('buttons').style.display = "block";
     };
 
     //When the window loads, run init.
@@ -198,7 +198,6 @@ const handleResponse = async (response) => {
 
   const characterInfo = async (character) => {
     const response = await fetch(`/getCharacter?name=${character}`);
-
     const infobox = await response.json();
 
     const box = document.getElementById('infobox');
@@ -211,7 +210,10 @@ const handleResponse = async (response) => {
       selectedChar = null;
       box.style.display = "none";
     }
-    console.log(infobox);
+
+
+
+    
     // const info = Object.values(infobox);
 
     // console.log(info);
@@ -242,24 +244,29 @@ const handleResponse = async (response) => {
     document.getElementById('icons').src = infobox.icon;
     document.getElementById('origin').innerHTML = infobox.origin;
     document.getElementById('mod').innerHTML = infobox.mod;
+
+    if(yourUsername!=null)
+    {
+      const getFav = await fetch(`/getFavorite?username=${yourUsername}&newFavorite=${selectedChar}`);
+      if(getFav.status == 404)
+      {
+        document.getElementById('/removeFavorite').style.display = "none";
+        document.getElementById('/addFavorite').style.display = "block";
+      }
+      else if(getFav.status == 200)
+      {
+        document.getElementById('/removeFavorite').style.display = "block";
+        document.getElementById('/addFavorite').style.display = "none";
+      }
+    }
   }
 
   const favorite = async (character) => {
     const characterAction = character.getAttribute('id');
     const characterMethod = character.getAttribute('class');
 
-    // const username = yourUsername;
-    // const characterName = selectedChar;
+    const data = `username=${yourUsername}&newFavorite=${selectedChar}`;
 
-    // const data = `?username=${username}?newFavorite=${characterName}`;
-    const getChar = await fetch(`/getCharacter?name=${selectedChar}`);
-    let obj = await getChar.json();
-    // obj = JSON.stringify(Object.values(obj)[0]);
-    console.log(obj);
-
-    const data = `username=${yourUsername}&newFavorite=${obj}`;
-
-    // Need to grab the entire json
     let response = await fetch(characterAction, {
       method: characterMethod,
       headers: {
@@ -269,12 +276,13 @@ const handleResponse = async (response) => {
       body: data,
     });
 
+    if(response.status == 201)
+    {
+      document.getElementById('/removeFavorite').style.display = "block";
+      document.getElementById('/addFavorite').style.display = "none";
+    }
+
     // console.log(Object.values(obj));
 
     // let obj = await response.json();
-  }
-
-  const fetchCharacter = async (character) =>
-  {
-
   }

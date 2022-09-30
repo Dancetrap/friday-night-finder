@@ -25,6 +25,7 @@ const urlStruct = {
     '/getUsers': jsonHandler.getUsers,
     '/getCharacters': jsonHandler.getCharacters,
     '/getCharacter': jsonHandler.getCharacter,
+    '/getFavorite': jsonHandler.getFavorite,
     '/characters.json' : htmlHandler.getJSONPrototype,
     '/favorite.png' : mediaHandler.getChecked,
     '/unfavorite.png' : mediaHandler.getUnchecked,
@@ -70,7 +71,7 @@ const handlePost = (request, response, parsedUrl) => {
     parseBody(request, response, jsonHandler.addFavorite);
   }
   else if(parsedUrl.pathname === '/removeFavorite') {
-    parseBody(request, response, jsonHandler.addFavorite);
+    parseBody(request, response, jsonHandler.removeFavorite);
   }
 };
 
@@ -138,7 +139,6 @@ const onRequest = (request, response) => {
   // }
   const parsedUrl = url.parse(request.url);
   if (request.method === 'POST') {
-    console.log(request.method);
     handlePost(request, response, parsedUrl);
   }
   else

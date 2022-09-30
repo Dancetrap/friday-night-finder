@@ -224,7 +224,7 @@ const getCharacter = (request, response, params) =>{
 }
 
 const getFavorite = (request, response, params) =>{
-    if(!params.name)
+    if(!params.newFavorite)
     {
         return respondJSON(request, response, 400, {
             message: 'Missing name parameter',
@@ -232,7 +232,7 @@ const getFavorite = (request, response, params) =>{
           });
     }
     // const obj = users[params.name].favorites;
-    const obj = users[params.username].favorites[characters[params.name]];
+    const obj = users[params.username].favorites.includes(params.newFavorite);
     
     if(obj) {
       return respondJSON(request, response, 200, obj)
@@ -252,25 +252,46 @@ const addFavorite = (request, response, params) =>{
           });
     }
 
+    const exist = users[params.username].favorites.includes(params.newFavorite);
+
+    if(exist)
+    {
+        return respondJSON(request, response, 204, {
+            message: 'Character Does Not Exists',
+          });
+    }
+
     // const formData = `username=${nameField.value}&newFavorite=${ageField.value}`;
     // Ask how to prevent a repeat of favoriting a character
     users[params.username].favorites.push(params.newFavorite);
-    return respondJSON(request, response, 200, {message: "Successfully Added!"})
+    return respondJSON(request, response, 201, {message: "Successfully Added!"})
 }
 
 // addFavorite()
 
 const removeFavorite = (request, response, params) =>{
-    if(!params.username && users[params.username] && !params.newFavorite && characters[params.newFavorite])
+    if(params.username != null && users[params.username] && !params.newFavorite && characters[params.newFavorite])
     {
-        // return error;
+        return respondJSON(request, response, 400, {
+            message: 'No username or character',
+            id: 'getUserMissingName'
+          });
     }
 
-    // const formData = `username=${nameField.value}&newFavorite=${ageField.value}`;
+    const exist = users[params.username].favorites.includes(params.newFavorite);
+
+    if(exist)
+    {
+        return respondJSON(request, response, 204, {
+            message: 'Character Does Not Exists',
+          });
+    }
+
     users[params.username].favorites.remove(params.newFavorite);
     return respondJSON(request, response, 200, {message: "Successfully Removed!"})
 }
 
+// Used for profile and checking whether or not the heart is checked our not
 const getFavorites = (request, response, params) => {
     // If no username, check for error
 
