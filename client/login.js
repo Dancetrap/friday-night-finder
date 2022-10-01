@@ -15,30 +15,6 @@ sessionStorage.removeItem("password")
 
 const handleResponse = async (response, message) => {
       
-    //Grab the content section
-    // const content = document.querySelector('#content');
-    
-    // //Based on the status code, display something
-    // switch(response.status) {
-    //   case 200: //success
-    //     content.innerHTML = `<b>Success</b>`;
-    //     break;
-    //   case 201: //created
-    //     content.innerHTML = '<b>Created</b>';
-    //     break;
-    //   case 204: //updated (no response back from server)
-    //     content.innerHTML = '<b>Updated (No Content)</b>';
-    //     return;
-    //   case 400: //bad request
-    //     content.innerHTML = `<b>Bad Request</b>`;
-    //     break;
-    //   default: //any other status code
-    //     content.innerHTML = `Error code not implemented by client.`;
-    //     break;
-    // }
-
-    //Parse the response to json. This works because we know the server always
-    //sends back json. Await because .json() is an async function.
 
     console.log(response);
     if(response.status == 204)

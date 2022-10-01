@@ -29,9 +29,9 @@ const urlStruct = {
     '/getCharacter': jsonHandler.getCharacter,
     '/getFavorite': jsonHandler.getFavorite,
     '/getFavorites': jsonHandler.getFavorites,
-    '/characters.json' : htmlHandler.getJSONPrototype,
-    '/favorite.png' : mediaHandler.getChecked,
-    '/unfavorite.png' : mediaHandler.getUnchecked,
+    '/characters.json': htmlHandler.getJSONPrototype,
+    '/favorite.png': mediaHandler.getChecked,
+    '/unfavorite.png': mediaHandler.getUnchecked,
     notFound: jsonHandler.notFound,
   },
   HEAD: {
@@ -69,11 +69,9 @@ const handlePost = (request, response, parsedUrl) => {
   // If they decide to sign up
   if (parsedUrl.pathname === '/addUser') {
     parseBody(request, response, jsonHandler.addUser);
-  }
-  else if(parsedUrl.pathname === '/addFavorite') {
+  } else if (parsedUrl.pathname === '/addFavorite') {
     parseBody(request, response, jsonHandler.addFavorite);
-  }
-  else if(parsedUrl.pathname === '/removeFavorite') {
+  } else if (parsedUrl.pathname === '/removeFavorite') {
     parseBody(request, response, jsonHandler.removeFavorite);
   }
 };
@@ -115,15 +113,8 @@ const handleGet = (request, response, parsedUrl) => {
   if (urlStruct[request.method][parsedUrl.pathname]) {
     return urlStruct[request.method][parsedUrl.pathname](request, response, params);
   }
-  else
-  {
-    return urlStruct[request.method].notFound(request, response, params);
-  }
 
-  // if (urlStruct[request.method][parsedUrl.pathname]) {
-  //   return urlStruct[request.method][parsedUrl.pathname](request, response, acceptedTypes, params);
-  // }
-  // return urlStruct[request.method].notFound(request, response, acceptedTypes, params);
+  return urlStruct[request.method].notFound(request, response, params);
 };
 
 // This function is called per request. The request and response
@@ -143,12 +134,9 @@ const onRequest = (request, response) => {
   const parsedUrl = url.parse(request.url);
   if (request.method === 'POST') {
     handlePost(request, response, parsedUrl);
-  }
-  else
-  {
+  } else {
     handleGet(request, response, parsedUrl);
   }
-  
 };
 
 // With the above onRequest and port, we can make a server.

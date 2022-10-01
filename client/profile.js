@@ -1,26 +1,67 @@
+let selectedChar = null;
 let yourUsername = null;
 if(sessionStorage.getItem("username") != null)
 {
   yourUsername = sessionStorage.getItem("username");
 }
 
+const content = document.querySelector('#content');
+
 const getFavorites = async () =>{
     if(yourUsername!=null)
     {
+        const content = document.querySelector('#content');
+        content.innerHTML = ``;
         const getFavs = await fetch(`/getFavorites?username=${yourUsername}`);
+
+        if(getFavs.status == 204)
+        {
+          content.innerHTML = `<h4>Use the search box to look up a character</h4>`;
+          return
+        }
+
         const objs = await getFavs.json();
         console.log(objs);
+        console.log(Object.values(objs));
+
+        Object.values(objs)[0].forEach(fav =>{
+            // let i = Object.values(objs).indexOf(fav)
+            // console.log(fav[0]);
+            let altName = '';
+            altName = fav.name.replace(/ /g, "%20");
+            const getCharacter = () => {
+              // console.log(altName);
+              characterInfo(altName);
+            };
+            
+            const characterDiv = document.createElement('div');
+            const characterButton = document.createElement('button');
+
+            characterButton.innerHTML = `<img src="${fav.imageURL}" alt="${fav.name}" height="150px" style="object-fit: contain;" id="${fav.name}Img"></img><p style="margin: 1px;">${fav.name}</p>`;
+            // characterButton.onclick = function(){characterInfo(altName);};
+            
+            characterButton.style = "background: rgba(0,0,0,0); border: none; cursor: pointer;";
+            characterDiv.appendChild(characterButton);
+            content.appendChild(characterDiv);
+            characterButton.addEventListener('click', getCharacter);
+        });
     }
 }
 
 const init = () => {
+
+    if(yourUsername != null)
+    {
+      document.querySelector("#myProfile").innerHTML = `${yourUsername}'s Favorites`;
+    }
+
     const sOut = document.querySelector("#signOut");
     sOut.addEventListener('submit',function(){
         sessionStorage.removeItem("username")
         sessionStorage.removeItem("password")
     });
 
-    
+    getFavorites();
 }
 
 function compareStrings(a, b) {
@@ -126,4 +167,4 @@ function compareStrings(a, b) {
   }
 
 window.onload = init;
-window.onload = getFavorites;
+// window.onload = getFavorites;

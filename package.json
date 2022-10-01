@@ -17,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/Dancetrap/friday-night-finder/issues"
   },
-  "homepage": "https://github.com/Dancetrap/friday-night-finder#readme"
+  "homepage": "https://github.com/Dancetrap/friday-night-finder#readme",
+  "devDependencies": {
+    "eslint": "^8.24.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0"
+  }
 }
