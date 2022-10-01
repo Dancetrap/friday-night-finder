@@ -294,13 +294,28 @@ const removeFavorite = (request, response, params) =>{
 // Used for profile and checking whether or not the heart is checked our not
 const getFavorites = (request, response, params) => {
     // If no username, check for error
+    if(!params.username)
+    {
+        return respondJSON(request, response, 400, {
+            message: 'Missing name parameter',
+            id: 'getUserMissingName'
+          });
+    }
 
     let favorites = [];
     users[params.username].favorites.forEach(favorite =>{
         favorites.push(characters[favorite]);
     });
 
+    const responseJSON = {
+        favorites,
+    };
+
+    console.log(favorites.length);
+
     // send back as json
+    if(favorites.length == 0) return respondJSON(request, response, 204, {message: 'No favorites have been added', id: 'emptyParameter'});
+    else return respondJSON(request, response, 200, responseJSON);
 }
 
 // For determining whether or not the heart has been checked

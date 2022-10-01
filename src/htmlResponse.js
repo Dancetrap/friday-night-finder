@@ -11,6 +11,7 @@ const css = fs.readFileSync(`${__dirname}/../client/style.css`);
 const js = fs.readFileSync(`${__dirname}/../client/finder.js`);
 const jstwo = fs.readFileSync(`${__dirname}/../client/handler.js`);
 const jsthree = fs.readFileSync(`${__dirname}/../client/login.js`);
+const jsfour = fs.readFileSync(`${__dirname}/../client/profile.js`);
 const json = fs.readFileSync(`${__dirname}/../characters.json`);
 
 //function to get the index page
@@ -61,6 +62,13 @@ const getJavaLogin = (request, response) => {
   response.end();
 };
 
+// gets profile function for profile
+const getJavaProfile = (request, response) => {
+  response.writeHead(200, { 'Content-Type': 'text/javascript' });
+  response.write(jsfour);
+  response.end();
+};
+
 // get JSON file
 const getJSONPrototype = (request, response) => {
   response.writeHead(200, { 'Content-Type': 'application/json' });
@@ -77,5 +85,6 @@ module.exports = {
   getJava,
   getJavaHandler,
   getJavaLogin,
+  getJavaProfile,
   getJSONPrototype,
 };

@@ -43,13 +43,11 @@ const handleResponse = async (response, message) => {
     console.log(response);
     if(response.status == 204)
     {
-        message.innerHTML = `Empty parameters`;
+        message.innerHTML = `Username already exist`;
         return;
     }
 
     let obj = await response.json();
-    console.log(obj.message);
-    console.log(response.status);
     if(response.status == 400) message.innerHTML = `${obj.message}`;
     
     //If we have a message, display it.

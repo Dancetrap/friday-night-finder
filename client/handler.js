@@ -9,10 +9,10 @@ if(sessionStorage.getItem("username") != null)
   yourUsername = sessionStorage.getItem("username");
 }
 
-if(sessionStorage.getItem("password") != null)
-{
-  yourPassword = sessionStorage.getItem("password");
-}
+// if(sessionStorage.getItem("password") != null)
+// {
+//   yourPassword = sessionStorage.getItem("password");
+// }
 
 // If user list is empty, then send username and password as null
 
@@ -87,17 +87,19 @@ const handleResponse = async (response) => {
     //Init function is called when window.onload runs (set below).
     const init = () => {
       const sIn = document.querySelector("#signIn");
+      const welcome = document.querySelector("#profile");
       const sOut = document.querySelector("#signOut");
 
       if(yourUsername != null)
       {
         sIn.style.display = "none";
-        sOut.style.display = "flex";
+        welcome.style.display = "flex";
+        document.querySelector("#welcome").innerHTML = `Welcome: ${yourUsername}`;
       }
       else
       {
         sIn.style.display = "flex";
-        sOut.style.display = "none";
+        welcome.style.display = "none";
       }
       
       sOut.addEventListener('submit',function(){
@@ -248,6 +250,8 @@ const handleResponse = async (response) => {
     document.getElementById('icons').src = infobox.icon;
     document.getElementById('origin').innerHTML = infobox.origin;
     document.getElementById('mod').innerHTML = infobox.mod;
+    if(infobox.quote != null) document.getElementById('quote').innerHTML = `Quote: <span id="line">${infobox.quote}</span>`;
+    else document.getElementById('quote').innerHTML = ``;
 
     if(yourUsername!=null)
     {
