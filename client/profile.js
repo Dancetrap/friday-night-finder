@@ -16,7 +16,7 @@ const getFavorites = async () =>{
 
         if(getFavs.status == 204)
         {
-          content.innerHTML = `<h4>Use the search box to look up a character</h4>`;
+          content.innerHTML = `<h4>You have no favorites</h4>`;
           return
         }
 
