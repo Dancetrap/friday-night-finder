@@ -131,39 +131,7 @@ function compareStrings(a, b) {
     if(yourUsername!=null)
     {
       const getFav = await fetch(`/getFavorite?username=${yourUsername}&newFavorite=${selectedChar}`);
-      if(getFav.status == 404)
-      {
-        document.getElementById('/removeFavorite').style.display = "none";
-        document.getElementById('/addFavorite').style.display = "block";
-      }
-      else if(getFav.status == 200)
-      {
-        document.getElementById('/removeFavorite').style.display = "block";
-        document.getElementById('/addFavorite').style.display = "none";
-      }
     }
-  }
-
-  const favorite = async (character, on) => {
-    const characterAction = character.getAttribute('id');
-    const characterMethod = character.getAttribute('class');
-
-    const data = `username=${yourUsername}&newFavorite=${selectedChar}`;
-
-    let response = await fetch(characterAction, {
-      method: characterMethod,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        'Accept': 'application/json',
-      },
-      body: data,
-    });
-      on.style.display = "block";
-      character.style.display = "none";
-
-    // console.log(Object.values(obj));
-
-    // let obj = await response.json();
   }
 
 window.onload = init;

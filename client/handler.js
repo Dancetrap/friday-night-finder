@@ -35,33 +35,6 @@ const handleResponse = async (response) => {
 
     //Uses fetch to send a postRequest. Marksed as async because we use await
     //within it.
-    const sendPost = async (nameForm) => {
-      //Grab all the info from the form
-      const nameAction = nameForm.getAttribute('action');
-      const nameMethod = nameForm.getAttribute('method');
-      
-      const nameField = nameForm.querySelector('#nameField');
-      const ageField = nameForm.querySelector('#ageField');
-
-      //Build a data string in the FORM-URLENCODED format.
-      const formData = `name=${nameField.value}&age=${ageField.value}`;
-
-      //Make a fetch request and await a response. Set the method to
-      //the one provided by the form (POST). Set the headers. Content-Type
-      //is the type of data we are sending. Accept is the data we would like
-      //in response. Then add our FORM-URLENCODED string as the body of the request.
-      let response = await fetch(nameAction, {
-        method: nameMethod,
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json',
-        },
-        body: formData,
-      });
-
-      //Once we have a response, handle it.
-      handleResponse(response);
-    };
 
     //Init function is called when window.onload runs (set below).
     const init = () => {
@@ -99,10 +72,11 @@ const handleResponse = async (response) => {
 
         if(response.status == 204)
         {
-          if(box.style.display == "none") content.innerHTML = `<h4>Use the search box to look up a character</h4>`;
+          console.log(box.style.display);
+          if(box.style.display == "none" || box.style.display == "") content.innerHTML = `<h4>Use the search box to look up a character</h4>`;
           else content.innerHTML = ``;
           // content.innerHTML = `<h4>Use the search box to look up a character</h4>`;
-          return
+          return;
         }
           const obj = await response.json();
           // console.log(obj);
