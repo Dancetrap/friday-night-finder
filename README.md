@@ -3,8 +3,11 @@ Welcome to the Friday Night Finder API! (note, this API currently only works off
 ![alt text](https://github.com/Dancetrap/friday-night-finder/blob/master/gitImages/welcome.jpg)
 ## How To Use
 Use the search bar to find a specific character you'd like to see.
-
-To favorite a character, login and click on the character that's displayed to view info about them
+![alt text](https://github.com/Dancetrap/friday-night-finder/blob/master/gitImages/img1.jpg)
+To favorite a character, login and click on the character that's displayed to view info about them. Click on the heart icon to favorite them. Click on it again to unfavorite them.
+![alt text](https://github.com/Dancetrap/friday-night-finder/blob/master/gitImages/img3.jpg)
+Click on the profile button to view all your favorite characters.
+![alt text](https://github.com/Dancetrap/friday-night-finder/blob/master/gitImages/img2.jpg)
 ## Prototype Character List
 - A.G.O.T.I. - FNF Entities
 - Aldryx - FNF Entities
