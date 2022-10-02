@@ -534,5 +534,13 @@
         "quote": "Now let me show you how this game ends - Scott Cawthon/Animdude (Line before his Boss Fight in FNAF World)",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/db/ScootUnused.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e6/ScottCawthonIcons.png"
+    },
+    "nonsense":{
+        "name": "nonsense",
+        "origin": "Vs. Nonsense",
+        "mod": "Vs. Nonsense",
+        "quote": "Did you just dab? In 2021? - Nonsense",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/19/NewSense.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b4/IconsNonsense.png"
     }
 }

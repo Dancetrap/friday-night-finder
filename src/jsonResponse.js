@@ -58,6 +58,7 @@ const getUsers = (request, response) => {
 const getUser = (request, response, params) => {
   const responseJSON = {
     message: 'Username and Password are required',
+    id: 'missingParams',
   };
   if (!params.username || !params.password) {
     responseJSON.id = 'missingParams';
@@ -70,9 +71,12 @@ const getUser = (request, response, params) => {
     if (params.password === users[params.username].password) {
       responseCode = 200;
     } else {
-      responseJSON.message = 'Incorrect Username or Password',
-      responseJSON.id = 'wrongPassword';
-      return respondJSON(request, response, 400, responseJSON);
+      // responseJSON.message = 'Incorrect Username or Password',
+      // responseJSON.id = 'wrongPassword';
+      return respondJSON(request, response, 400, {
+        message: 'Incorrect Username or Password',
+        id: 'wrongPassword',
+      });
     }
 
     if (responseCode === 200) {
@@ -80,9 +84,12 @@ const getUser = (request, response, params) => {
       return respondJSON(request, response, responseCode, responseJSON);
     }
   } else {
-    responseJSON.message = 'Incorrect Username or Password',
-    responseJSON.id = 'wrongUsername';
-    return respondJSON(request, response, 400, responseJSON);
+    // responseJSON.message = 'Incorrect Username or Password',
+    // responseJSON.id = 'wrongUsername',
+    return respondJSON(request, response, 400, {
+      message: 'Incorrect Username or Password',
+      id: 'wrongUsername',
+    });
   }
 
   return respondJSONMeta(request, response, responseCode);
@@ -135,7 +142,8 @@ const getCharacters = (request, response, params) => {
   // const characterArray = JSON.parse(characters);
   const split = params.name.split('');
 
-  for (const k in characters) {
+  // Had to change to foreach because eslint wouldn't allow it
+  Object.keys(characters).forEach((k) => {
     // console.log(k);
     let exist = true;
     const name = k.split('');
@@ -152,14 +160,11 @@ const getCharacters = (request, response, params) => {
       search.push(characters[k]);
       // items += JSON.stringify(characters[k])
     }
-  }
+  });
   // console.log(search);
   const newJSON = {
     ...search,
   };
-
-  // console.log(newJSON);
-  console.log(params.name);
 
   if (JSON.stringify(newJSON) !== '{}') {
     // console.log(newJSON.name);
@@ -281,28 +286,12 @@ const getFavorites = (request, response, params) => {
     favorites,
   };
 
-  console.log(favorites.length);
-
   // send back as json
   if (favorites.length === 0) return respondJSON(request, response, 204, { message: 'No favorites have been added', id: 'emptyParameter' });
   return respondJSON(request, response, 200, responseJSON);
 };
 
 // For determining whether or not the heart has been checked
-
-const noContent = (request, response, input) => {
-  const responseJSON = {
-    message: '',
-  };
-
-  if (input === 'characters' || input === 'mods') {
-    responseJSON.message = 'There are no characters that match your search';
-  } else if (input === 'favs') {
-    responseJSON.message = 'You have no favorite characters';
-  }
-
-  return respondJSON(request, response, 204, responseJSON);
-};
 
 const notFound = (request, response) => {
   const responseJSON = {
@@ -314,7 +303,6 @@ const notFound = (request, response) => {
 };
 
 module.exports = {
-  noContent,
   getCharacters,
   getCharacter,
   addUser,
