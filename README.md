@@ -8,6 +8,7 @@ To favorite a character, login and click on the character that's displayed to vi
 ![alt text](https://github.com/Dancetrap/friday-night-finder/blob/master/gitImages/img3.jpg)
 Click on the profile button to view all your favorite characters.
 ![alt text](https://github.com/Dancetrap/friday-night-finder/blob/master/gitImages/img2.jpg)
+You can also click on those characters, too to get their info as well.
 ## Prototype Character List
 - A.G.O.T.I. - FNF Entities
 - Aldryx - FNF Entities
