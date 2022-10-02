@@ -439,6 +439,14 @@
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/2e/NeedlemouseIdleAnim.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/2/27/NeedleM0use_Official_icons.png"
     },
+    "starved":{
+        "name": "starved",
+        "origin": "Starved Creepypasta",
+        "mod": "Vs. Sonic.exe",
+        "quote": "I love that hedgehod - Starved after killing and eating Sonic",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/05/StarvedIdleAnim.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/9/91/StarvedIcons.png"
+    },
     "eduardo":{
         "name": "eduardo",
         "origin": "Eddsworld",
@@ -474,7 +482,7 @@
     "mami":{
         "name": "mami",
         "origin": "Madoka Magica",
-        "mod": "Vs. Hatsune Miku",
+        "mod": "Vs. Mami",
         "quote": "I'm Mami Tomoe. I’m a ninth grader at Mitakihara Middle School. And… once I made a contract with Kyubey, I became a Magical Girl. - Mami (Madoka Magica E2)",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/05/MamiSalvationIdle1.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/0/0e/SalvationFormerIcons.png"
