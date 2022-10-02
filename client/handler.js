@@ -2,46 +2,11 @@ let selectedChar = null;
 const box = document.getElementById('infobox');
 
 let yourUsername = null;
-let yourPassword = null;
 
 if(sessionStorage.getItem("username") != null)
 {
   yourUsername = sessionStorage.getItem("username");
 }
-
-// if(sessionStorage.getItem("password") != null)
-// {
-//   yourPassword = sessionStorage.getItem("password");
-// }
-
-// If user list is empty, then send username and password as null
-
-// const formData = `username=${yourUsername}&password=${yourPassword}`;
-
-// import characters from '../characters.json' assert {type: 'json'};;
-
-// const val = Object.values(characters).sort(function(a, b) {
-//   return compareStrings(a.name, b.name);
-// });
-
-// val.forEach(char =>{
-//   console.log(char.name);
-// })
-
-const handleResponse = async (response) => {
-      
-      //Grab the content section
-      const content = document.querySelector('#content');
-
-      //Parse the response to json. This works because we know the server always
-      //sends back json. Await because .json() is an async function.
-      let obj = await response.json();
-      
-      //If we have a message, display it.
-      if(obj.message){
-        content.innerHTML += `<p>${obj.message}</p>`;
-      }
-    };
 
     //Uses fetch to send a postRequest. Marksed as async because we use await
     //within it.
