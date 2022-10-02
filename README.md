@@ -1,5 +1,8 @@
 ﻿# Friday Night Finder
+Welcome to the Friday Night Finder API! (note, this API currently only works off of a character JSON. Shortly, this API will be use another API that pulls data from the Funkipedia and Friday Night Funkin Wikis)
 ![alt text](https://github.com/Dancetrap/friday-night-finder/blob/master/gitImages/welcome.jpg)
+## How To Use
+
 ## Prototype Character List
 - A.G.O.T.I. - FNF Entities
 - Aldryx - FNF Entities
