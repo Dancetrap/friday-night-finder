@@ -1,5 +1,5 @@
 ﻿# Friday Night Finder
-![alt text](https://github.com/Dancetrap/friday-night-finder/tree/master/gitImages/welcome.jpg)
+![alt text](https://github.com/Dancetrap/friday-night-finder/blob/master/gitImages/welcome.jpg)
 ## Prototype Character List
 - A.G.O.T.I. - FNF Entities
 - Aldryx - FNF Entities
