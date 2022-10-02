@@ -18,6 +18,16 @@ if(sessionStorage.getItem("username") != null)
 
 // const formData = `username=${yourUsername}&password=${yourPassword}`;
 
+// import characters from '../characters.json' assert {type: 'json'};;
+
+// const val = Object.values(characters).sort(function(a, b) {
+//   return compareStrings(a.name, b.name);
+// });
+
+// val.forEach(char =>{
+//   console.log(char.name);
+// })
+
 const handleResponse = async (response) => {
       
       //Grab the content section
@@ -72,7 +82,6 @@ const handleResponse = async (response) => {
 
         if(response.status == 204)
         {
-          console.log(box.style.display);
           if(box.style.display == "none" || box.style.display == "") content.innerHTML = `<h4>Use the search box to look up a character</h4>`;
           else content.innerHTML = ``;
           // content.innerHTML = `<h4>Use the search box to look up a character</h4>`;
@@ -84,7 +93,7 @@ const handleResponse = async (response) => {
           
           if(response.status == 200)
           {
-            globalJSON = obj;
+            // globalJSON = obj;
   
             const val = Object.values(obj).sort(function(a, b) {
               return compareStrings(a.name, b.name);

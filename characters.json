@@ -13,6 +13,14 @@
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunkin/images/e/e9/Gfboombox.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunkin/images/8/81/GirlfriendIcon.png"
     },
+    "spooky kids":{
+        "name": "spooky kids",
+        "origin": "Spooky Month",
+        "mod": "Base Game",
+        "quote": "IT IS A SPOOKY MONTH! - Spooky Kids (It's spooky month)",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunkin/images/2/27/ITSSPOOKYMONTH.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunkin/images/6/6b/Skid_and_Pump_character_Icons.png"
+    },
     "pico":{
         "name": "pico",
         "origin": "Pico's School",
@@ -246,6 +254,14 @@
         "quote": "It's a beautiful day outside. Birds are singing. Flowers are blooming. On days like these, kids like you...should be burning in hell. - Sans' line before his fight",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/5/53/IndieSansBoneIdle.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/d/d4/SansIcons.png"
+    },
+    "papyrus":{
+        "name": "papyrus",
+        "origin": "Undertale",
+        "mod": "Indie Cross",
+        "quote": "NYEH HEH HEH HEH!! IT IS I! THE GREAT PAPYRUS! - Papyrus' iconic line in Undertale",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/a/a8/IndiePapyrusIdle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e0/PapyrusIndieIcons.png"
     },
     "bendy":{
         "name": "bendy",
@@ -542,5 +558,19 @@
         "quote": "Did you just dab? In 2021? - Nonsense",
         "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/1/19/NewSense.gif",
         "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b4/IconsNonsense.png"
+    },
+    "boy":{
+        "name": "boy",
+        "origin": "Twinsomnia",
+        "mod": "Twinsomnia",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/b/b1/Lilboyidle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/e/e9/BoyRealIcons.png"
+    },
+    "girl":{
+        "name": "girl",
+        "origin": "Twinsomnia",
+        "mod": "Twinsomnia",
+        "imageURL": "https://static.wikia.nocookie.net/fridaynightfunking/images/7/78/Lilgirlidle.gif",
+        "icon": "https://static.wikia.nocookie.net/fridaynightfunking/images/4/40/GirlRealIcons.png"
     }
 }
