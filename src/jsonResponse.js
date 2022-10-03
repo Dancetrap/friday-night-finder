@@ -326,7 +326,7 @@ const notFound = (request, response) => {
 module.exports = {
   getCharacters,
   getCharacter,
-  testWikiJS,
+  // testWikiJS,
   addUser,
   getUser,
   getUsers,
