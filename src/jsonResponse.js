@@ -9,8 +9,8 @@ const wiki = require('wikijs').default;
 // Bad Request! TBD
 // Not Found! The user does not exist
 
-//dijs.github.io/wiki/
-//github.com/dijs/wiki
+// dijs.github.io/wiki/
+// github.com/dijs/wiki
 
 const json = fs.readFileSync(`${__dirname}/../characters.json`);
 
@@ -51,22 +51,21 @@ const respondJSONMeta = (request, response, status) => {
   response.end();
 };
 
-const testWikiJS = (request, response, params) => {
-  const responseJSON = {
-    message: 'Missing Search Term',
-    id: 'missingParams',
-  };
-  if (!params.search)
-  {
-    return respondJSON(request, response, 404, responseJSON);
-  }
+// const testWikiJS = (request, response, params) => {
+//   const responseJSON = {
+//     message: 'Missing Search Term',
+//     id: 'missingParams',
+//   };
+//   if (!params.search) {
+//     return respondJSON(request, response, 404, responseJSON);
+//   }
 
-  wiki({
-    apiUrl: 'https://awoiaf.westeros.org/api.php',
-    origin: null
-  }).search(params.search);
-  // Test with 'Winterfell'
-}
+//   wiki({
+//     apiUrl: 'https://awoiaf.westeros.org/api.php',
+//     origin: null,
+//   }).search(params.search);
+//   // Test with 'Winterfell'
+// };
 
 // debugPurposes
 const getUsers = (request, response) => {
@@ -338,6 +337,6 @@ module.exports = {
   notFound,
 
   externals: {
-    "isomorphic-fetch": "fetch"
+    'isomorphic-fetch': 'fetch',
   },
 };
