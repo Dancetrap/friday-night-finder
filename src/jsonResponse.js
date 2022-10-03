@@ -1,15 +1,19 @@
 const fs = require('fs');
 
+// import wiki from 'wikijs';
+const wiki = require('wikijs').default;
+
 // Success! Loaded characters have been found
 // Created! You've successfully favorited a character
 // No Content! The favorites page has no content
 // Bad Request! TBD
 // Not Found! The user does not exist
 
+//dijs.github.io/wiki/
+
 const json = fs.readFileSync(`${__dirname}/../characters.json`);
 
 const characters = JSON.parse(json);
-// const search = {};
 let search = [];
 const users = {};
 
@@ -45,6 +49,23 @@ const respondJSONMeta = (request, response, status) => {
   response.writeHead(status, headers);
   response.end();
 };
+
+const testWikiJS = (request, response, params) => {
+  const responseJSON = {
+    message: 'Missing Search Term',
+    id: 'missingParams',
+  };
+  if (!params.search)
+  {
+    return respondJSON(request, response, 404, responseJSON);
+  }
+
+  wiki({
+    apiUrl: 'https://awoiaf.westeros.org/api.php',
+    origin: null
+  }).search(params.search);
+  // Test with 'Winterfell'
+}
 
 // debugPurposes
 const getUsers = (request, response) => {
@@ -305,6 +326,7 @@ const notFound = (request, response) => {
 module.exports = {
   getCharacters,
   getCharacter,
+  testWikiJS,
   addUser,
   getUser,
   getUsers,
@@ -313,4 +335,8 @@ module.exports = {
   getFavorites,
   getFavorite,
   notFound,
+
+  externals: {
+    "isomorphic-fetch": "fetch"
+  },
 };

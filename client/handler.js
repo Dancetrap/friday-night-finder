@@ -2,6 +2,7 @@ let selectedChar = null;
 const box = document.getElementById('infobox');
 
 let yourUsername = null;
+// import wiki from '../wikijs';
 
 if(sessionStorage.getItem("username") != null)
 {
@@ -13,6 +14,8 @@ if(sessionStorage.getItem("username") != null)
 
     //Init function is called when window.onload runs (set below).
     const init = () => {
+      // Bruce Wayne
+
       const sIn = document.querySelector("#signIn");
       const welcome = document.querySelector("#profile");
       const sOut = document.querySelector("#signOut");
@@ -99,6 +102,8 @@ if(sessionStorage.getItem("username") != null)
 
         if(yourUsername == null) document.getElementById('buttons').style.display = "none";
         else document.getElementById('buttons').style.display = "block";
+
+        // wiki().page('Batman')	.then(page => page.info('alterEgo')).then(console.log); 
     };
 
     //When the window loads, run init.
