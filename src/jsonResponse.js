@@ -10,6 +10,7 @@ const wiki = require('wikijs').default;
 // Not Found! The user does not exist
 
 //dijs.github.io/wiki/
+//github.com/dijs/wiki
 
 const json = fs.readFileSync(`${__dirname}/../characters.json`);
 
