@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 // import wiki from 'wikijs';
-const wiki = require('wikijs').default;
+// const wiki = require('wikijs').default;
 
 // Success! Loaded characters have been found
 // Created! You've successfully favorited a character
