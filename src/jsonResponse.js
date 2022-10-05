@@ -18,6 +18,7 @@ const json = fs.readFileSync(`${__dirname}/../characters.json`);
 const characters = JSON.parse(json);
 let search = [];
 const users = {};
+const test = [];
 
 // Object with all character data
 
@@ -54,7 +55,6 @@ const respondJSONMeta = (request, response, status) => {
 
 const testWikiJS = (request, response, params) => {
   // let test = {};
-  const test = [];
   const responseJSON = {
     message: 'Missing Search Term',
     id: 'missingParams',
@@ -67,19 +67,12 @@ const testWikiJS = (request, response, params) => {
   // wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).page('Boyfriend').then(char =>{console.log(char.content())});
   // wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api/php',}).search('sonic.exe').then(data => console.log(data.results));
   // const testing = wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).pagesInCategory('Category:Characters');
-  return wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).pagesInCategory('Category:Characters').then(char => {
-    char.forEach((i) =>{
+  return wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php' }).pagesInCategory('Category:Characters').then((char) => {
+    char.forEach((i) => {
       test.push(i);
     });
     return respondJSON(request, response, 200, test);
   });
-
-  // This will return an npm error where it'll expect to return a value at the end of an async
-  // function but if I put it outside of the wiki function then it'll already be over
-
-  // This one is somehow always first.
-  // return respondJSON(request, response, 200, test);
-
 };
 
 // debugPurposes
