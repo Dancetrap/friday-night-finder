@@ -54,6 +54,7 @@ const respondJSONMeta = (request, response, status) => {
 
 const testWikiJS = async (request, response, params) => {
   // let test = {};
+  let test = [];
   const responseJSON = {
     message: 'Missing Search Term',
     id: 'missingParams',
@@ -61,21 +62,17 @@ const testWikiJS = async (request, response, params) => {
   if (!params.search) {
     return respondJSON(request, response, 404, responseJSON);
   }
-
-  // wiki()
-	// .page(params.search)
-	// .then(page => page.info('alterEgo'))
-	// .then(console.log); // Bruce Wayne
-
   // wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api.php',}).page('Mistful Crimson Morning/Characters').then(page => page.info()).then(console.log);
   // wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api/php',}).pagesInCategory('Category:Characters').then(char => console.log(char));
-  wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).pagesInCategory('Category:Characters').then(char =>{console.log(char)});
-  // wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api/php',}).find(params.search).then(page => page.content()).then(console.log);
-  // await wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api/php',}).page(params.search).then(page => console.log(page.info()))
-
-  // console.log(test);
-
-  return respondJSON(request, response, 200, {message: "Success!",});
+  // wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).pagesInCategory('Category:Characters').then(char =>{console.log(char)});
+  // wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api/php',}).search('sonic.exe').then(data => console.log(data.results));
+  // const testing = wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).pagesInCategory('Category:Characters');
+  wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).pagesInCategory('Category:Characters').then(char => {
+    char.forEach((i) =>{
+      test.push(i);
+    });
+    return respondJSON(request, response, 200, test);
+  });
 };
 
 // debugPurposes
