@@ -29,7 +29,7 @@ const urlStruct = {
     '/getCharacter': jsonHandler.getCharacter,
     '/getFavorite': jsonHandler.getFavorite,
     '/getFavorites': jsonHandler.getFavorites,
-    '/testWiki': jsonHandler.testWikiJS,
+    '/getCharacterList': jsonHandler.getCharacterList,
     '/characters.json': htmlHandler.getJSONPrototype,
     '/favorite.png': mediaHandler.getChecked,
     '/unfavorite.png': mediaHandler.getUnchecked,

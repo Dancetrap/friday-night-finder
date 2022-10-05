@@ -18,7 +18,7 @@ const json = fs.readFileSync(`${__dirname}/../characters.json`);
 const characters = JSON.parse(json);
 let search = [];
 const users = {};
-const test = [];
+let list = [];
 
 // Object with all character data
 
@@ -53,39 +53,20 @@ const respondJSONMeta = (request, response, status) => {
   response.end();
 };
 
-const testWikiJS = (request, response, params) => {
+const getCharacterList = async (request, response) => {
   // let test = {};
+  // const responseJSON = {
+  //   message: 'Missing Search Term',
+  //   id: 'missingParams',
+  // };
+
+  list = await wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php' }).pagesInCategory('Category:Characters');
   const responseJSON = {
-    message: 'Missing Search Term',
-    id: 'missingParams',
+    list,
   };
-  if (!params.search) {
-    return respondJSON(request, response, 404, responseJSON);
-  }
+  return respondJSON(request, response, 200, responseJSON);
 
-  // wiki().page('batman').then(page => page.content()).then(console.log);
-  // wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api.php' }).page('Solazar').then((page) => page.info()).then(console.log);
-  // wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).page('Old/Unused Assets').then(char => Object.keys(char.info()).length === 0).then(console.log);
-  return wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php' }).pagesInCategory('Category:Characters').then((char) => {
-    // char.forEach((i) => {
-    //   if(wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).page(i).then(char => Object.keys(char.info()).length === 0))
-    //   {
-    //     return;
-    //   }
-    //     test.push(i);
-
-    // });
-    for (let i = 0; i < char.length; i++) {
-      // wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).page('Old/Unused Assets').then(set => Object.keys(set.info()).length === 0).then(console.log);
-      // wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).page(char[i]).then(set => Object.keys(set.info()).length === 0).then(console.log);
-      // if(wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).page(char[i]).then(set => Object.keys(set.info()).length === 0))
-      // {
-      test.push(char[i]);
-      // }
-      // console.log(char[i]);
-    }
-    return respondJSON(request, response, 200, test);
-  });
+  // return await respondJSON(request, response, 200, list);
 };
 
 // debugPurposes
@@ -347,7 +328,7 @@ const notFound = (request, response) => {
 module.exports = {
   getCharacters,
   getCharacter,
-  testWikiJS,
+  getCharacterList,
   addUser,
   getUser,
   getUsers,
