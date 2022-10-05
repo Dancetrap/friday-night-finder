@@ -52,7 +52,7 @@ const respondJSONMeta = (request, response, status) => {
   response.end();
 };
 
-const testWikiJS = async (request, response, params) => {
+const testWikiJS = (request, response, params) => {
   // let test = {};
   let test = [];
   const responseJSON = {
@@ -73,6 +73,13 @@ const testWikiJS = async (request, response, params) => {
     });
     return respondJSON(request, response, 200, test);
   });
+
+  // This will return an npm error where it'll expect to return a value at the end of an async
+  // function but if I put it outside of the wiki function then it'll already be over
+
+  // This one is somehow always first.
+  return respondJSON(request, response, 200, test);
+
 };
 
 // debugPurposes
