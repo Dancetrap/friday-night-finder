@@ -64,10 +64,10 @@ const testWikiJS = (request, response, params) => {
   }
   // wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api.php',}).page('Mistful Crimson Morning/Characters').then(page => page.info()).then(console.log);
   // wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api/php',}).pagesInCategory('Category:Characters').then(char => console.log(char));
-  // wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).pagesInCategory('Category:Characters').then(char =>{console.log(char)});
+  // wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).page('Boyfriend').then(char =>{console.log(char.content())});
   // wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api/php',}).search('sonic.exe').then(data => console.log(data.results));
   // const testing = wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).pagesInCategory('Category:Characters');
-  wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).pagesInCategory('Category:Characters').then(char => {
+  return wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).pagesInCategory('Category:Characters').then(char => {
     char.forEach((i) =>{
       test.push(i);
     });
@@ -78,7 +78,7 @@ const testWikiJS = (request, response, params) => {
   // function but if I put it outside of the wiki function then it'll already be over
 
   // This one is somehow always first.
-  return respondJSON(request, response, 200, test);
+  // return respondJSON(request, response, 200, test);
 
 };
 
