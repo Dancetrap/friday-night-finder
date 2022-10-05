@@ -54,7 +54,7 @@ const respondJSONMeta = (request, response, status) => {
 
 const testWikiJS = (request, response, params) => {
   // let test = {};
-  let test = [];
+  const test = [];
   const responseJSON = {
     message: 'Missing Search Term',
     id: 'missingParams',
