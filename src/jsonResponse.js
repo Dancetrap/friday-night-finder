@@ -62,11 +62,10 @@ const testWikiJS = (request, response, params) => {
   if (!params.search) {
     return respondJSON(request, response, 404, responseJSON);
   }
-  // wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api.php',}).page('Mistful Crimson Morning/Characters').then(page => page.info()).then(console.log);
-  // wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api/php',}).pagesInCategory('Category:Characters').then(char => console.log(char));
-  // wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).page('Boyfriend').then(char =>{console.log(char.content())});
-  // wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api/php',}).search('sonic.exe').then(data => console.log(data.results));
-  // const testing = wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).pagesInCategory('Category:Characters');
+
+  // wiki().page('batman').then(page => page.content()).then(console.log);
+  wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api.php' }).page('Tabi').then((page) => page.info()).then(console.log);
+  // wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).page('Girlfriend').then(char => char.info()).then(console.log);
   return wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php' }).pagesInCategory('Category:Characters').then((char) => {
     char.forEach((i) => {
       test.push(i);
