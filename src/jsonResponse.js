@@ -1,7 +1,8 @@
 const fs = require('fs');
 
 // import wiki from 'wikijs';
-// const wiki = require('wikijs').default;
+const wiki = require('wikijs').default;
+// const page = require('./page');
 
 // Success! Loaded characters have been found
 // Created! You've successfully favorited a character
@@ -17,6 +18,11 @@ const json = fs.readFileSync(`${__dirname}/../characters.json`);
 const characters = JSON.parse(json);
 let search = [];
 const users = {};
+
+// const defaultOptions = {
+// 	apiUrl: 'https://fridaynightfunkin.fandom.com/api.php',
+// 	origin: '*'
+// };
 
 // Object with all character data
 
@@ -51,21 +57,31 @@ const respondJSONMeta = (request, response, status) => {
   response.end();
 };
 
-// const testWikiJS = (request, response, params) => {
-//   const responseJSON = {
-//     message: 'Missing Search Term',
-//     id: 'missingParams',
-//   };
-//   if (!params.search) {
-//     return respondJSON(request, response, 404, responseJSON);
-//   }
+const testWikiJS = async (request, response, params) => {
+  let test = {};
+  const responseJSON = {
+    message: 'Missing Search Term',
+    id: 'missingParams',
+  };
+  if (!params.search) {
+    return respondJSON(request, response, 404, responseJSON);
+  }
 
-//   wiki({
-//     apiUrl: 'https://awoiaf.westeros.org/api.php',
-//     origin: null,
-//   }).search(params.search);
-//   // Test with 'Winterfell'
-// };
+  // wiki()
+	// .page(params.search)
+	// .then(page => page.info('alterEgo'))
+	// .then(console.log); // Bruce Wayne
+
+  // wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api.php',}).page('Mistful Crimson Morning/Characters').then(page => page.info()).then(console.log);
+  // wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api/php',}).pagesInCategory('Category:Characters').then(char => console.log(char));
+  wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php',}).pagesInCategory('Category:Characters').then(char =>{console.log(char)});
+  // wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api/php',}).find(params.search).then(page => page.content()).then(console.log);
+  // await wiki({ apiUrl: 'https://fridaynightfunking.fandom.com/api/php',}).page(params.search).then(page => console.log(page.info()))
+
+  // console.log(test);
+
+  return respondJSON(request, response, 200, {message: "Success!",});
+};
 
 // debugPurposes
 const getUsers = (request, response) => {
@@ -326,7 +342,7 @@ const notFound = (request, response) => {
 module.exports = {
   getCharacters,
   getCharacter,
-  // testWikiJS,
+  testWikiJS,
   addUser,
   getUser,
   getUsers,
