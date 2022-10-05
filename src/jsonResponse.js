@@ -19,11 +19,6 @@ const characters = JSON.parse(json);
 let search = [];
 const users = {};
 
-// const defaultOptions = {
-// 	apiUrl: 'https://fridaynightfunkin.fandom.com/api.php',
-// 	origin: '*'
-// };
-
 // Object with all character data
 
 // getCharacter
@@ -58,7 +53,7 @@ const respondJSONMeta = (request, response, status) => {
 };
 
 const testWikiJS = async (request, response, params) => {
-  let test = {};
+  // let test = {};
   const responseJSON = {
     message: 'Missing Search Term',
     id: 'missingParams',
