@@ -103,7 +103,6 @@ const getCharacterList = async (request, response) => {
 // So this is a function rather than a const so that there won't be a return variable
 async function wikiCharacters() {
   list = await wiki({ apiUrl: api }).pagesInCategory('Category:Characters');
-  wiki({ apiUrl: api }).page('Boyfriend').then((char) => char.info()).then(console.log);
 }
 // For all characters, get and return their main image and name
 
@@ -181,7 +180,6 @@ const findCharacter = async (request, response, params) => {
   });
 
   return Promise.all(promises).then(() => {
-    console.log(search);
 
     const newJSON = {
       ...search,

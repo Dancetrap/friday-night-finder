@@ -27,6 +27,8 @@ const urlStruct = {
     '/wikiHandler.js': htmlHandler.getJava,
     '/login.js': htmlHandler.getJavaLogin,
     '/profile.js': htmlHandler.getJavaProfile,
+    '/loginFinal.js': htmlHandler.getFinalJavaLogin,
+    '/profileFinal.js': htmlHandler.getFinalJavaProfile,
     '/getUser': jsonHandler.getUser,
     '/getUsers': jsonHandler.getUsers,
     '/findCharacter': jsonHandler.findCharacter,

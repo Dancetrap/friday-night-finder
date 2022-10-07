@@ -15,6 +15,8 @@ const js = fs.readFileSync(`${__dirname}/../client/wikiHandler.js`);
 const jstwo = fs.readFileSync(`${__dirname}/../client/handler.js`);
 const jsthree = fs.readFileSync(`${__dirname}/../client/login.js`);
 const jsfour = fs.readFileSync(`${__dirname}/../client/profile.js`);
+const jsfive = fs.readFileSync(`${__dirname}/../client/loginFinal.js`);
+const jssix = fs.readFileSync(`${__dirname}/../client/profileFinal.js`);
 const json = fs.readFileSync(`${__dirname}/../characters.json`);
 
 // function to get the index page
@@ -91,6 +93,20 @@ const getJavaProfile = (request, response) => {
   response.end();
 };
 
+// gets login function for login.html
+const getFinalJavaLogin = (request, response) => {
+  response.writeHead(200, { 'Content-Type': 'text/javascript' });
+  response.write(jsfive);
+  response.end();
+};
+
+// gets profile function for profile
+const getFinalJavaProfile = (request, response) => {
+  response.writeHead(200, { 'Content-Type': 'text/javascript' });
+  response.write(jssix);
+  response.end();
+};
+
 // get JSON file
 const getJSONPrototype = (request, response) => {
   response.writeHead(200, { 'Content-Type': 'application/json' });
@@ -111,5 +127,7 @@ module.exports = {
   getJavaHandler,
   getJavaLogin,
   getJavaProfile,
+  getFinalJavaLogin,
+  getFinalJavaProfile,
   getJSONPrototype,
 };
