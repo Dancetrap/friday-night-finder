@@ -18,8 +18,19 @@ const json = fs.readFileSync(`${__dirname}/../characters.json`);
 const characters = JSON.parse(json);
 let search = [];
 const users = {};
+// I would like to set this list without having to have it pass through a function
 let list = [];
+const api = 'https://fridaynightfunkin.fandom.com/api/php';
 
+// const setList = async () => {
+//   list = await wiki({ apiUrl: api }).pagesInCategory('Category:Characters');
+// };
+
+// window.onload = setList;
+
+// console.log(list);
+
+// console.log(getCharacterList(request, response));
 // Object with all character data
 
 // getCharacter
@@ -54,19 +65,199 @@ const respondJSONMeta = (request, response, status) => {
 };
 
 const getCharacterList = async (request, response) => {
-  // let test = {};
-  // const responseJSON = {
-  //   message: 'Missing Search Term',
-  //   id: 'missingParams',
-  // };
+  // const blank = [];
+  list = await wiki({ apiUrl: api }).pagesInCategory('Category:Characters');
 
-  list = await wiki({ apiUrl: 'https://fridaynightfunkin.fandom.com/api/php' }).pagesInCategory('Category:Characters');
+  // list.forEach(async (char) => {
+  //   const charName = await wiki({ apiUrl: api }).page(char).then((i) => i.info('name'));
+  //   const debut = await wiki({ apiUrl: api }).page(char).then((i) => i.info('debut'));
+  //   const appear = await wiki({ apiUrl: api }).page(char).then((i) => i.info('appearsin'));
+  //   const header = await wiki({ apiUrl: api }).page(char).then((i) => i.info('headercolor'));
+  //   const idle = await wiki({ apiUrl: api }).page(char).then((i) => i.mainImage());
+
+  //   const newJSON = {
+  //     name: charName,
+  //     origin: debut,
+  //     mod: appear,
+  //     color: header,
+  //     image: idle,
+  //     // icon: icons,
+  //   };
+  //   blank.push(newJSON);
+  //   if (charName === undefined) {
+  //     const index = blank.indexOf(newJSON[char]);
+  //     blank.splice(index, 1);
+  //   }
+  //   if (list.indexOf(char) === list.length - 1) {
+  //     return respondJSON(request, response, 200, blank);
+  //   }
+  //   return respondJSON(request, response, 200, blank);
+  // });
+  console.log(list);
   const responseJSON = {
     list,
   };
   return respondJSON(request, response, 200, responseJSON);
+};
 
-  // return await respondJSON(request, response, 200, list);
+// So this is a function rather than a const so that there won't be a return variable
+async function wikiCharacters() {
+  list = await wiki({ apiUrl: api }).pagesInCategory('Category:Characters');
+  wiki({ apiUrl: api }).page('Boyfriend').then((char) => char.info()).then(console.log);
+}
+// For all characters, get and return their main image and name
+
+const findCharacter = async (request, response, params) => {
+  search = [];
+  await wikiCharacters();
+  // console.log(list[0]);
+  const responseJSON = {
+    message: 'Missing Search Term',
+    id: 'missingParams',
+  };
+
+  if (!params.search) {
+    return respondJSON(request, response, 400, responseJSON);
+  }
+
+  const split = params.search.split('');
+  const promises = list.map((k) => {
+    let exist = true;
+    const lower = k.toLowerCase();
+    const name = lower.split('');
+    for (let i = 0; i < params.search.length; i++) {
+      if (exist) {
+        if (name[i] !== split[i]) {
+          exist = false;
+          break;
+        }
+      }
+    }
+
+    if (exist) {
+      return wiki({ apiUrl: api }).page(k).then((char) => char.info('name')).then((charName) => {
+        if (charName !== undefined && !search.includes(charName)) {
+          // const real = wiki({ apiUrl: api }).page(k).then((char) => char.info());
+          // const debut = wiki({ apiUrl: api }).page(k).then((char) => char.info('debut'));
+          // const appear = wiki({ apiUrl: api }).page(k).then((char) => char.info('appearsin'));
+          // const header = wiki({ apiUrl: api }).page(k).then((char) => char.info('headercolor'));
+          // const font = wiki({ apiUrl: api}).page(k).then((char) => char.info('headerfontcolor'));
+          // const idle = wiki({ apiUrl: api }).page(k).then((char) => char.mainImage());
+          return wiki({ apiUrl: api }).page(k).then((char) => char.info('debut')).then((debut) => wiki({ apiUrl: api }).page(k).then((char) => char.info('appearsin')).then((appear) => wiki({ apiUrl: api }).page(k).then((char) => char.info('headercolor')).then((header) => wiki({ apiUrl: api }).page(k).then((char) => char.info('headerfontcolor')).then((font) => wiki({ apiUrl: api }).page(k).then((char) => char.mainImage()).then((idle) => {
+            const splitIdle = idle.split('/revision/');
+
+            const obj = {
+              page: k,
+              name: charName,
+              origin: debut,
+              mod: appear,
+              color: header,
+              fontColor: font,
+              image: splitIdle[0],
+            };
+            search.push(obj);
+            // Yeah I had to go Inspection here
+          })))));
+
+          // const splitIdle = idle.split('/revision/');
+
+          // const obj = {
+          //   page: k,
+          //   name: charName,
+          //   origin: debut,
+          //   mod: appear,
+          //   color: header,
+          //   fontColor: font,
+          //   image: idle,
+          //   // icon: icons,
+          // };
+          // search.push(obj);
+          // search.push(k);
+        }
+        return undefined;
+      });
+    }
+    return undefined;
+  });
+
+  return Promise.all(promises).then(() => {
+    console.log(search);
+
+    const newJSON = {
+      ...search,
+    };
+
+    if (JSON.stringify(newJSON) !== '{}') {
+    // console.log(newJSON.name);
+
+      return respondJSON(request, response, 200, newJSON);
+    }
+
+    // gets unexpected end of JSON input message
+    if (params.search === '') {
+      return respondJSONMeta(request, response, 204);
+    }
+
+    return respondJSON(request, response, 404, {
+      message: 'Character Not Found',
+      id: 'Not Found',
+    });
+  // return respondJSON(request, response, 200, { message: 'Success!' });
+  });
+};
+
+const searchCharacter = async (request, response, params) => {
+  // await getCharacterList(request, response);
+  await wikiCharacters();
+  // console.log(list);
+
+  const responseJSON = {
+    message: 'Missing Search Term',
+    id: 'missingParams',
+  };
+
+  if (!params.search) {
+    return respondJSON(request, response, 400, responseJSON);
+  }
+
+  wiki({ apiUrl: api }).page(params.search).catch((err) => {
+    if (err.message === 'No article found') {
+      responseJSON.message = 'Character Does Not Exist';
+      responseJSON.id = 'missingArticle';
+      return respondJSON(request, response, 404, responseJSON);
+    }
+    return respondJSON(request, response, 400, responseJSON);
+  });
+
+  const charName = await wiki({ apiUrl: api }).page(params.search).then((char) => char.info('name'));
+  const debut = await wiki({ apiUrl: api }).page(params.search).then((char) => char.info('debut'));
+  const appear = await wiki({ apiUrl: api }).page(params.search).then((char) => char.info('appearsin'));
+  const header = await wiki({ apiUrl: api }).page(params.search).then((char) => char.info('headercolor'));
+  const idle = await wiki({ apiUrl: api }).page(params.search).then((char) => char.mainImage());
+
+  // all the images have this thing in their URL that says /revision/... and that really messes
+  // with displaying the image. So I decided to get rid of it.
+  const splitIdle = idle.split('/revision/');
+
+  if (charName === undefined) {
+    responseJSON.message = 'Character Does Not Exist';
+    responseJSON.id = 'missingArticle';
+    return respondJSON(request, response, 404, responseJSON);
+  }
+
+  const newJSON = {
+    page: params.search,
+    name: charName,
+    origin: debut,
+    mod: appear,
+    color: header,
+    image: splitIdle[0],
+    // icon: icons,
+  };
+
+  // console.log(newJSON);
+
+  return respondJSON(request, response, 200, newJSON);
 };
 
 // debugPurposes
@@ -329,6 +520,8 @@ module.exports = {
   getCharacters,
   getCharacter,
   getCharacterList,
+  findCharacter,
+  searchCharacter,
   addUser,
   getUser,
   getUsers,

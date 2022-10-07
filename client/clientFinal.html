@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>FNF Finder</title>
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  
+  <!-- <script type="module" type="text/javascript" src="/finder.js"></script> -->
+  <script type="module" type="text/javascript" src="/handler.js"></script>
+</head>
+<body>
+  <form action="/login.html" id="signIn">
+    <input type="submit" value="Login">
+  </form>
+  <div id="profile">
+    <h3 id="welcome"></h3>
+    <form action="/profile.html">
+      <input type="submit" value="Profile">
+    </form>
+    <form action="/client.html" id="signOut">
+      <input type="submit" value="Sign Out">
+    </form>
+  </div>
+  <br>
+  <br>
+  <section id="top">
+    <h3>Friday Night Finder</h3>
+    <div id="inputField">
+      <form id="characterForm" action="characters" method="post">
+        <label for="name">Character: </label>
+        <input id="characterField" type="search" name="name" />
+      </form>
+      <!-- This will be used for when I implement the wiki stuff-->
+      <!-- <form id="modsForm" action="mods" method="post">
+        <label for="name">Mod: </label>
+        <input id="modsField" type="search" name="name" />
+      </form> -->
+    </div>
+  </section>
+  <section id="content">
+    <h4>Use the search box to look up a character</h4>
+  </section>
+  <section id="infobox">
+    <img src="https://static.wikia.nocookie.net/fridaynightfunking/images/a/a8/MajinSonic3.0IdleAnim.gif" alt="sample" height="500" id="baseImg">
+    <div id="info">
+      <h1 id="name">XXXXXX</h1>
+      <h2>Origin: <span id="origin">XXXXXX</span></h2>
+      <h2>Mod: <span id="mod">XXXXXX</span></h2>
+      <h2 id="quote"></h2>
+      <img src="https://static.wikia.nocookie.net/fridaynightfunking/images/d/db/Icon-Majin-OG.png" alt="icon" id="icons">
+      <br>
+      <div id="buttons">
+        <button id="/addFavorite" class="POST" style="background: rgba(0,0,0,0); border: none; cursor: pointer; position:absolute; bottom:0; right: 0;"><img src="/unfavorite.png" alt="unchecked" width="50px"></button>
+        <button id="/removeFavorite" class="POST" style="background: rgba(0,0,0,0); border: none; cursor: pointer; position:absolute; bottom:0; right: 0;"><img src="/favorite.png" alt="checked" width="50px"></button>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
