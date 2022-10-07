@@ -116,7 +116,7 @@ const findCharacter = async (request, response, params) => {
   };
 
   if (!params.search) {
-    return respondJSON(request, response, 400, responseJSON);
+    return respondJSON(request, response, 204, responseJSON);
   }
 
   const split = params.search.split('');
@@ -180,7 +180,6 @@ const findCharacter = async (request, response, params) => {
   });
 
   return Promise.all(promises).then(() => {
-
     const newJSON = {
       ...search,
     };
