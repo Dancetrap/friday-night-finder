@@ -37,6 +37,7 @@ const urlStruct = {
     '/getCharacter': jsonHandler.getCharacter,
     '/getFavorite': jsonHandler.getFavorite,
     '/getFavorites': jsonHandler.getFavorites,
+    '/getWikiFavorites': jsonHandler.getWikiFavorites,
     '/getCharacterList': jsonHandler.getCharacterList,
     '/characters.json': htmlHandler.getJSONPrototype,
     '/favorite.png': mediaHandler.getChecked,

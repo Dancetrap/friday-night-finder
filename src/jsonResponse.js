@@ -502,6 +502,41 @@ const getFavorites = (request, response, params) => {
   return respondJSON(request, response, 200, responseJSON);
 };
 
+const getWikiFavorites = (request, response, params) => {
+  // If no username, check for error
+  if (!params.username) {
+    return respondJSON(request, response, 400, {
+      message: 'Missing name parameter',
+      id: 'getUserMissingName',
+    });
+  }
+
+  console.log(users[params.username].favorites);
+  // const favorites = [];
+  const short = users[params.username].favorites;
+  // const promise = short.map((favorite) => favorites.push(characters[favorite]));
+  // // users[params.username].favorites.forEach((favorite) => {
+  // //   favorites.push(characters[favorite]);
+  // // });
+  // return Promise.all(promise).then(() => {
+  //   const responseJSON = {
+  //     short,
+  //   };
+
+  // if (favorites.length === 0) return respondJSON(request, response, 204,
+  // { message: 'No favorites have been added', id: 'emptyParameter' });
+  //   return respondJSON(request, response, 200, responseJSON);
+  // });
+  const responseJSON = {
+    short,
+  };
+
+  if (short.length === 0) return respondJSON(request, response, 204, { message: 'No favorites have been added', id: 'emptyParameter' });
+  return respondJSON(request, response, 200, responseJSON);
+
+  // send back as json
+};
+
 // For determining whether or not the heart has been checked
 
 const notFound = (request, response) => {
@@ -526,6 +561,7 @@ module.exports = {
   removeFavorite,
   getFavorites,
   getFavorite,
+  getWikiFavorites,
   notFound,
 
   externals: {

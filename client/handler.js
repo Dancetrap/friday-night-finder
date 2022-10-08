@@ -232,27 +232,27 @@ if(sessionStorage.getItem("username") != null)
     const init = () => {
       // Bruce Wayne
 
-    //   const sIn = document.querySelector("#signIn");
-    //   const welcome = document.querySelector("#profile");
-    //   const sOut = document.querySelector("#signOut");
+      const sIn = document.querySelector("#signIn");
+      const welcome = document.querySelector("#profile");
+      const sOut = document.querySelector("#signOut");
 
-    //   if(yourUsername != null)
-    //   {
-    //     sIn.style.display = "none";
-    //     welcome.style.display = "flex";
-    //     document.querySelector("#welcome").innerHTML = `Welcome: ${yourUsername}`;
-    //   }
-    //   else
-    //   {
-    //     sIn.style.display = "flex";
-    //     welcome.style.display = "none";
-    //   }
+      if(yourUsername != null)
+      {
+        sIn.style.display = "none";
+        welcome.style.display = "flex";
+        document.querySelector("#welcome").innerHTML = `Welcome: ${yourUsername}`;
+      }
+      else
+      {
+        sIn.style.display = "flex";
+        welcome.style.display = "none";
+      }
       
-    //   sOut.addEventListener('submit',function(){
-    //     sessionStorage.removeItem("username")
-    //     sessionStorage.removeItem("password")
-    //   });
-    //   //Grab the form
+      sOut.addEventListener('submit',function(){
+        sessionStorage.removeItem("username")
+        sessionStorage.removeItem("password")
+      });
+      //Grab the form
 
       const searchBox = document.querySelector('#characterField');
 
