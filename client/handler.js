@@ -286,7 +286,7 @@ if(sessionStorage.getItem("username") != null)
       
               content.innerHTML = '';
   
-              console.log(val);
+              // console.log(val);
               // Object.values(obj).forEach(char => {
               val.forEach(char => {
                 // console.log(char);
@@ -341,7 +341,7 @@ if(sessionStorage.getItem("username") != null)
   const characterInfo = async (character) => {
     const response = await fetch(`/searchCharacter?search=${character}`);
     const infobox = await response.json();
-    console.log(infobox);
+    // console.log(infobox);
 
     const box = document.getElementById('infobox');
     if(character != selectedChar){
@@ -384,7 +384,7 @@ if(sessionStorage.getItem("username") != null)
     // }
 
     document.getElementById('colorBox').style.backgroundColor = infobox.color;
-    console.log(document.getElementById('colorBox').style.backgroundColor == "rgb(0, 0, 0)");
+    // console.log(document.getElementById('colorBox').style.backgroundColor == "rgb(0, 0, 0)");
     if(document.getElementById('colorBox').style.backgroundColor == "rgb(0, 0, 0)") document.getElementById('name').style.color = "white";
     else document.getElementById('name').style.color = "black";
     document.getElementById('name').innerHTML = infobox.name;

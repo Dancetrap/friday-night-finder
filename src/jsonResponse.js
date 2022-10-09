@@ -93,7 +93,7 @@ const getCharacterList = async (request, response) => {
   //   }
   //   return respondJSON(request, response, 200, blank);
   // });
-  console.log(list);
+  // console.log(list);
   const responseJSON = {
     list,
   };
@@ -511,28 +511,59 @@ const getWikiFavorites = (request, response, params) => {
     });
   }
 
-  console.log(users[params.username].favorites);
-  // const favorites = [];
+  // console.log(users[params.username].favorites);
+  const favorites = [];
   const short = users[params.username].favorites;
-  // const promise = short.map((favorite) => favorites.push(characters[favorite]));
+
+  // console.log(short);
+
+  const promise = short.map((favorite) => wiki({ apiUrl: api }).page(favorite).then((char) => char.info('name')).then((charName) => wiki({ apiUrl: api }).page(favorite).then((char) => char.info('debut')).then((debut) => wiki({ apiUrl: api }).page(favorite).then((char) => char.info('appearsin')).then((appear) => wiki({ apiUrl: api }).page(favorite).then((char) => char.info('headercolor')).then((header) => wiki({ apiUrl: api }).page(favorite).then((char) => char.info('headerfontcolor')).then((font) => wiki({ apiUrl: api }).page(favorite).then((char) => char.mainImage()).then((idle) => {
+    const splitIdle = idle.split('/revision/');
+    const obj = {
+      page: favorite,
+      name: charName,
+      origin: debut,
+      mod: appear,
+      color: header,
+      fontColor: font,
+      image: splitIdle[0],
+    };
+    favorites.push(obj);
+  })))))));
+  //   // all the images have this thing in their URL that says /revision/... and that really messes
+  //   // with displaying the image. So I decided to get rid of it.
+  //   // const splitIdle = idle.split('/revision/');
+
+  //         })
   // // users[params.username].favorites.forEach((favorite) => {
   // //   favorites.push(characters[favorite]);
-  // // });
-  // return Promise.all(promise).then(() => {
-  //   const responseJSON = {
-  //     short,
-  //   };
 
-  // if (favorites.length === 0) return respondJSON(request, response, 204,
+  // );
+
+  return Promise.all(promise).then(() => {
+    // console.log(favorites);
+
+    const responseJSON = {
+      favorites,
+    };
+
+    if (favorites.length === 0) {
+      return respondJSON(
+        request,
+        response,
+        204,
+        { message: 'No favorites have been added', id: 'emptyParameter' },
+      );
+    }
+    return respondJSON(request, response, 200, responseJSON);
+  });
+  // const responseJSON = {
+  //   short,
+  // };
+
+  // if (short.length === 0) return respondJSON(request, response, 204,
   // { message: 'No favorites have been added', id: 'emptyParameter' });
-  //   return respondJSON(request, response, 200, responseJSON);
-  // });
-  const responseJSON = {
-    short,
-  };
-
-  if (short.length === 0) return respondJSON(request, response, 204, { message: 'No favorites have been added', id: 'emptyParameter' });
-  return respondJSON(request, response, 200, responseJSON);
+  // return respondJSON(request, response, 200, responseJSON);
 
   // send back as json
 };

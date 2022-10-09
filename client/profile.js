@@ -156,6 +156,7 @@ const getFavorites = async () =>{
         const content = document.querySelector('#content');
         content.innerHTML = ``;
         const getFavs = await fetch(`/getWikiFavorites?username=${yourUsername}`);
+        console.log(getFavs);
         // const getFavs = await fetch(`/getFavorites?username=${yourUsername}`);
         if(getFavs.status == 204)
         {
@@ -169,33 +170,33 @@ const getFavorites = async () =>{
 
         const list = Object.values(objs)[0];
 
-        const promises = list.map((fav)=>{
-          // const response = await fetch(`/searchCharacter?search=${character}`);
-        });
-
-        // Object.values(objs)[0].forEach(fav =>{
-        //   // const info = await fetch(`/getWikiFavorites?username=${yourUsername}`);
+        // const promises = list.map((fav)=>{
         //   // const response = await fetch(`/searchCharacter?search=${character}`);
-        //     // let i = Object.values(objs).indexOf(fav)
-        //     // console.log(fav[0]);
-        //     // let altName = '';
-        //     // altName = fav.name.replace(/ /g, "%20");
-        //     const getCharacter = () => {
-        //       // console.log(altName);
-        //       characterInfo(fav.page);
-        //     };
-        //     // console.log(fav);
-        //     const characterDiv = document.createElement('div');
-        //     const characterButton = document.createElement('button');
-
-        //     characterButton.innerHTML = `<img src="${fav.image}" alt="${fav.page}" height="150px" style="object-fit: contain;" id="${fav.page}Img"></img><p style="margin: 1px;">${fav.page}</p>`;
-        // //     // characterButton.onclick = function(){characterInfo(altName);};
-            
-        //     characterButton.style = "background: rgba(0,0,0,0); border: none; cursor: pointer;";
-        //     characterDiv.appendChild(characterButton);
-        //     content.appendChild(characterDiv);
-        //     characterButton.addEventListener('click', getCharacter);
         // });
+
+        Object.values(objs)[0].forEach(fav =>{
+          // const info = await fetch(`/getWikiFavorites?username=${yourUsername}`);
+          // const response = await fetch(`/searchCharacter?search=${character}`);
+            // let i = Object.values(objs).indexOf(fav)
+            // console.log(fav[0]);
+            // let altName = '';
+            // altName = fav.name.replace(/ /g, "%20");
+            const getCharacter = () => {
+              // console.log(altName);
+              characterInfo(fav.page);
+            };
+            // console.log(fav);
+            const characterDiv = document.createElement('div');
+            const characterButton = document.createElement('button');
+
+            characterButton.innerHTML = `<img src="${fav.image}" alt="${fav.page}" height="150px" style="object-fit: contain;" id="${fav.page}Img"></img><p style="margin: 1px;">${fav.page}</p>`;
+        //     // characterButton.onclick = function(){characterInfo(altName);};
+            
+            characterButton.style = "background: rgba(0,0,0,0); border: none; cursor: pointer;";
+            characterDiv.appendChild(characterButton);
+            content.appendChild(characterDiv);
+            characterButton.addEventListener('click', getCharacter);
+        });
 
 
     }
@@ -232,7 +233,7 @@ function compareStrings(a, b) {
   const characterInfo = async (character) => {
     const response = await fetch(`/searchCharacter?search=${character}`);
     const infobox = await response.json();
-    console.log(infobox);
+    // console.log(infobox);
 
     const box = document.getElementById('infobox');
     if(character != selectedChar){
@@ -275,7 +276,7 @@ function compareStrings(a, b) {
     // }
 
     document.getElementById('colorBox').style.backgroundColor = infobox.color;
-    console.log(document.getElementById('colorBox').style.backgroundColor == "rgb(0, 0, 0)");
+    // console.log(document.getElementById('colorBox').style.backgroundColor == "rgb(0, 0, 0)");
     if(document.getElementById('colorBox').style.backgroundColor == "rgb(0, 0, 0)") document.getElementById('name').style.color = "white";
     else document.getElementById('name').style.color = "black";
     document.getElementById('name').innerHTML = infobox.name;
@@ -286,20 +287,20 @@ function compareStrings(a, b) {
     // if(infobox.quote != null) document.getElementById('quote').innerHTML = `Quote: <span id="line">${infobox.quote}</span>`;
     // else document.getElementById('quote').innerHTML = ``;
 
-    if(yourUsername!=null)
-    {
-      const getFav = await fetch(`/getFavorite?username=${yourUsername}&newFavorite=${selectedChar}`);
-      if(getFav.status == 404)
-      {
-        document.getElementById('/removeFavorite').style.display = "none";
-        document.getElementById('/addFavorite').style.display = "block";
-      }
-      else if(getFav.status == 200)
-      {
-        document.getElementById('/removeFavorite').style.display = "block";
-        document.getElementById('/addFavorite').style.display = "none";
-      }
-    }
+    // if(yourUsername!=null)
+    // {
+    //   const getFav = await fetch(`/getFavorite?username=${yourUsername}&newFavorite=${selectedChar}`);
+    //   if(getFav.status == 404)
+    //   {
+    //     document.getElementById('/removeFavorite').style.display = "none";
+    //     document.getElementById('/addFavorite').style.display = "block";
+    //   }
+    //   else if(getFav.status == 200)
+    //   {
+    //     document.getElementById('/removeFavorite').style.display = "block";
+    //     document.getElementById('/addFavorite').style.display = "none";
+    //   }
+    // }
   }
 window.onload = init;
 // window.onload = getFavorites;
