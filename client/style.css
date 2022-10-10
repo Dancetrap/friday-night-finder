@@ -43,6 +43,7 @@ html, body {
   flex-wrap: wrap;
   justify-content: center;
   width: 100vw;
+  padding-top: 1em;
   /* height: 100vh; */
 }
 
