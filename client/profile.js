@@ -189,7 +189,7 @@ const getFavorites = async () =>{
             const characterDiv = document.createElement('div');
             const characterButton = document.createElement('button');
 
-            characterButton.innerHTML = `<img src="${fav.image}" alt="${fav.page}" height="150px" style="object-fit: contain;" id="${fav.page}Img"></img><p style="margin: 1px;">${fav.page}</p>`;
+            characterButton.innerHTML = `<img src="${fav.image}" alt="${fav.page}" height="150px" style="object-fit: contain;" id="${fav.page}Img"></img><p style="margin: 1px; font-family: 'Phantom'; ">${fav.page}</p>`;
         //     // characterButton.onclick = function(){characterInfo(altName);};
             
             characterButton.style = "background: rgba(0,0,0,0); border: none; cursor: pointer;";

@@ -298,7 +298,7 @@ if(sessionStorage.getItem("username") != null)
                   const characterDiv = document.createElement('div');
                   const characterButton = document.createElement('button');
   
-                  characterButton.innerHTML = `<img src="${char.image}" alt="${char.page}" height="150px" style="object-fit: contain;" id="${char.page}Img"></img><p style="margin: 1px;">${char.page}</p>`;
+                  characterButton.innerHTML = `<img src="${char.image}" alt="${char.page}" height="150px" style="object-fit: contain;" id="${char.page}Img"></img><p style="margin: 1px; font-family: 'Phantom'; ">${char.page}</p>`;
               //     // characterButton.onclick = function(){characterInfo(altName);};
                   
                   characterButton.style = "background: rgba(0,0,0,0); border: none; cursor: pointer;";

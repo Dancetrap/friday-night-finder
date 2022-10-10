@@ -20,6 +20,7 @@ const urlStruct = {
     '/login.html': htmlHandler.getLogin,
     '/profile.html': htmlHandler.getProfile,
     '/style.css': htmlHandler.getCSS,
+    '/phantom.ttf': mediaHandler.getFont,
     '/handler.js': htmlHandler.getJavaHandler,
     '/login.js': htmlHandler.getJavaLogin,
     '/profile.js': htmlHandler.getJavaProfile,
