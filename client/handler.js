@@ -220,6 +220,7 @@ const box = document.getElementById('infobox');
 let yourUsername = null;
 // import wiki from '../wikijs';
 
+
 if(sessionStorage.getItem("username") != null)
 {
   yourUsername = sessionStorage.getItem("username");
@@ -258,13 +259,17 @@ if(sessionStorage.getItem("username") != null)
 
       searchBox.addEventListener('input', async () => {
         // if searchBox.value includes a space, it will automatically put in a '%20' in between
+        // const respond = fetch(`/findCharacter?search=${searchBox.value}`);
+        // console.log((await respond).status);
+        if(searchBox.value != null || searchBox.value != '')
+        {
+          content.innerHTML = '<p>Loading...</p>';
+        }
+
+        // I think that this is the best I can get.
+
         const response = await fetch(`/findCharacter?search=${searchBox.value}`);
-          // const response = await fetch(`/getCharacters?name=${searchBox.value}`);
-          // This is where the Unexpected end of JSON input error happens
-          // console.log(response);
           const box = document.getElementById('infobox');
-          // console.log(box.style);
-  
           if(response.status == 204)
           {
             if(box.style.display == "none" || box.style.display == "") content.innerHTML = `<h4>Use the search box to look up a character</h4>`;

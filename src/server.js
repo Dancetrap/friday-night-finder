@@ -33,7 +33,6 @@ const urlStruct = {
     '/getFavorite': jsonHandler.getFavorite,
     '/getFavorites': jsonHandler.getFavorites,
     '/getWikiFavorites': jsonHandler.getWikiFavorites,
-    '/getCharacterList': jsonHandler.getCharacterList,
     '/characters.json': htmlHandler.getJSONPrototype,
     '/favorite.png': mediaHandler.getChecked,
     '/unfavorite.png': mediaHandler.getUnchecked,

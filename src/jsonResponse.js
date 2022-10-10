@@ -3,7 +3,6 @@ const fs = require('fs');
 // import wiki from 'wikijs';
 const wiki = require('wikijs').default;
 // const page = require('./page');
-
 // Success! Loaded characters have been found
 // Created! You've successfully favorited a character
 // No Content! The favorites page has no content
@@ -64,57 +63,32 @@ const respondJSONMeta = (request, response, status) => {
   response.end();
 };
 
-const getCharacterList = async (request, response) => {
-  // const blank = [];
-  list = await wiki({ apiUrl: api }).pagesInCategory('Category:Characters');
-
-  // list.forEach(async (char) => {
-  //   const charName = await wiki({ apiUrl: api }).page(char).then((i) => i.info('name'));
-  //   const debut = await wiki({ apiUrl: api }).page(char).then((i) => i.info('debut'));
-  //   const appear = await wiki({ apiUrl: api }).page(char).then((i) => i.info('appearsin'));
-  //   const header = await wiki({ apiUrl: api }).page(char).then((i) => i.info('headercolor'));
-  //   const idle = await wiki({ apiUrl: api }).page(char).then((i) => i.mainImage());
-
-  //   const newJSON = {
-  //     name: charName,
-  //     origin: debut,
-  //     mod: appear,
-  //     color: header,
-  //     image: idle,
-  //     // icon: icons,
-  //   };
-  //   blank.push(newJSON);
-  //   if (charName === undefined) {
-  //     const index = blank.indexOf(newJSON[char]);
-  //     blank.splice(index, 1);
-  //   }
-  //   if (list.indexOf(char) === list.length - 1) {
-  //     return respondJSON(request, response, 200, blank);
-  //   }
-  //   return respondJSON(request, response, 200, blank);
-  // });
-  // console.log(list);
-  const responseJSON = {
-    list,
-  };
-  return respondJSON(request, response, 200, responseJSON);
-};
-
 // So this is a function rather than a const so that there won't be a return variable
 async function wikiCharacters() {
   list = await wiki({ apiUrl: api }).pagesInCategory('Category:Characters');
 }
 // For all characters, get and return their main image and name
 
+// const util = require('util');
+
+// function loading(promise) {
+//   setInterval(() => {
+//     const load = util.inspect(promise).includes('pending');
+//     if (load) console.log(load);
+//     return load;
+//   });
+// }
+
 const findCharacter = async (request, response, params) => {
   search = [];
   await wikiCharacters();
+  // await check();
   // console.log(list[0]);
   const responseJSON = {
     message: 'Missing Search Term',
     id: 'missingParams',
   };
-
+  // console.log(util.inspect(findCharacter).includes('pending'));
   if (!params.search) {
     return respondJSON(request, response, 204, responseJSON);
   }
@@ -136,12 +110,6 @@ const findCharacter = async (request, response, params) => {
     if (exist) {
       return wiki({ apiUrl: api }).page(k).then((char) => char.info('name')).then((charName) => {
         if (charName !== undefined && !search.includes(charName)) {
-          // const real = wiki({ apiUrl: api }).page(k).then((char) => char.info());
-          // const debut = wiki({ apiUrl: api }).page(k).then((char) => char.info('debut'));
-          // const appear = wiki({ apiUrl: api }).page(k).then((char) => char.info('appearsin'));
-          // const header = wiki({ apiUrl: api }).page(k).then((char) => char.info('headercolor'));
-          // const font = wiki({ apiUrl: api}).page(k).then((char) => char.info('headerfontcolor'));
-          // const idle = wiki({ apiUrl: api }).page(k).then((char) => char.mainImage());
           return wiki({ apiUrl: api }).page(k).then((char) => char.info('debut')).then((debut) => wiki({ apiUrl: api }).page(k).then((char) => char.info('appearsin')).then((appear) => wiki({ apiUrl: api }).page(k).then((char) => char.info('headercolor')).then((header) => wiki({ apiUrl: api }).page(k).then((char) => char.info('headerfontcolor')).then((font) => wiki({ apiUrl: api }).page(k).then((char) => char.mainImage()).then((idle) => {
             const splitIdle = idle.split('/revision/');
 
@@ -157,21 +125,6 @@ const findCharacter = async (request, response, params) => {
             search.push(obj);
             // Yeah I had to go Inspection here
           })))));
-
-          // const splitIdle = idle.split('/revision/');
-
-          // const obj = {
-          //   page: k,
-          //   name: charName,
-          //   origin: debut,
-          //   mod: appear,
-          //   color: header,
-          //   fontColor: font,
-          //   image: idle,
-          //   // icon: icons,
-          // };
-          // search.push(obj);
-          // search.push(k);
         }
         return undefined;
       });
@@ -179,7 +132,15 @@ const findCharacter = async (request, response, params) => {
     return undefined;
   });
 
+  // setInterval(() => {
+  //   const load = util.inspect(promises).includes('pending');
+  //   if (load) console.log(load);
+  //   return load;
+  // });
+
+  // This is after the promise has been fulfilled
   return Promise.all(promises).then(() => {
+    // console.log('Done');
     const newJSON = {
       ...search,
     };
@@ -582,7 +543,6 @@ const notFound = (request, response) => {
 module.exports = {
   getCharacters,
   getCharacter,
-  getCharacterList,
   findCharacter,
   searchCharacter,
   addUser,

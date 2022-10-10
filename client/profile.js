@@ -156,19 +156,17 @@ const getFavorites = async () =>{
         const content = document.querySelector('#content');
         content.innerHTML = ``;
         const getFavs = await fetch(`/getWikiFavorites?username=${yourUsername}`);
-        console.log(getFavs);
+        console.log(fetch(`/getWikiFavorites?username=${yourUsername}`));
         // const getFavs = await fetch(`/getFavorites?username=${yourUsername}`);
         if(getFavs.status == 204)
         {
           content.innerHTML = `<h4>You have no favorites</h4>`;
-          return
+          return;
         }
 
         const objs = await getFavs.json();
         // console.log(objs);
         console.log(Object.values(objs));
-
-        const list = Object.values(objs)[0];
 
         // const promises = list.map((fav)=>{
         //   // const response = await fetch(`/searchCharacter?search=${character}`);
