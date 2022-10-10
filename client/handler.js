@@ -220,6 +220,8 @@ const box = document.getElementById('infobox');
 let yourUsername = null;
 // import wiki from '../wikijs';
 
+let pending = false;
+let response;
 
 if(sessionStorage.getItem("username") != null)
 {
@@ -267,8 +269,17 @@ if(sessionStorage.getItem("username") != null)
         }
 
         // I think that this is the best I can get.
-
-        const response = await fetch(`/findCharacter?search=${searchBox.value}`);
+        const controller = new AbortController();
+        const signal = controller.signal;
+        // console.log(signal);
+        response = await fetch(`/findCharacter?search=${searchBox.value}`, {signal});
+        if(pending)
+        {
+          controller.abort();
+          response = await fetch(`/findCharacter?search=${searchBox.value}`);
+        }
+        pending = true;
+        // if(controller) controller.abort();
           const box = document.getElementById('infobox');
           if(response.status == 204)
           {
@@ -284,7 +295,7 @@ if(sessionStorage.getItem("username") != null)
             if(response.status == 200)
             {
               // globalJSON = obj;
-    
+              pending = false;
               const val = Object.values(obj).sort(function(a, b) {
                 return compareStrings(a.name, b.name);
               });
