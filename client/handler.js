@@ -258,27 +258,23 @@ if(sessionStorage.getItem("username") != null)
       //Grab the form
 
       const searchBox = document.querySelector('#characterField');
-
-      searchBox.addEventListener('input', async () => {
-        // if searchBox.value includes a space, it will automatically put in a '%20' in between
+      const makeRequest = async (searchBox) => {
+ // if searchBox.value includes a space, it will automatically put in a '%20' in between
         // const respond = fetch(`/findCharacter?search=${searchBox.value}`);
         // console.log((await respond).status);
-        if(searchBox.value != null || searchBox.value != '')
-        {
-          content.innerHTML = '<p>Loading...</p>';
-        }
+
 
         // I think that this is the best I can get.
-        const controller = new AbortController();
-        const signal = controller.signal;
+        // const controller = new AbortController();
+        // const signal = controller.signal;
         // console.log(signal);
-        response = await fetch(`/findCharacter?search=${searchBox.value}`, {signal});
-        if(pending)
-        {
-          controller.abort();
-          response = await fetch(`/findCharacter?search=${searchBox.value}`);
-        }
-        pending = true;
+        response = await fetch(`/findCharacter?search=${searchBox.value}`);
+        // if(pending)
+        // {
+        //   controller.abort();
+          
+        // }
+        // pending = true;
         // if(controller) controller.abort();
           const box = document.getElementById('infobox');
           if(response.status == 204)
@@ -327,6 +323,17 @@ if(sessionStorage.getItem("username") != null)
             {
                 content.innerHTML = `<h4>Error: ${obj.message}</h4>`;
             }
+      };
+      let request;
+      searchBox.addEventListener('input', () => {
+        if(searchBox.value != null || searchBox.value != '')
+        {
+          content.innerHTML = '<p>Loading...</p>';
+        }
+        clearTimeout(request);
+        request = setTimeout(() =>{
+          makeRequest(searchBox);
+        }, 1000);
       });
         let add = () => favorite(document.getElementById('/addFavorite'),document.getElementById('/removeFavorite'))
         let remove = () => favorite(document.getElementById('/removeFavorite'),document.getElementById('/addFavorite'))
