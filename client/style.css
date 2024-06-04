@@ -11,8 +11,8 @@ html, body {
 }
 
 #signIn{
-  float: right;
-  justify-content: end;
+  /* float: right; */
+  justify-content: space-between;
   display: flex;
 }
 
